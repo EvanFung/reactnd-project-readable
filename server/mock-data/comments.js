@@ -21,6 +21,4 @@ const defaultData = {
   }
 }
 
-module.exports = {
-  defaultData:defaultData
-}
+module.exports = defaultData
