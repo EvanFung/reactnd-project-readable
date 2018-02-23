@@ -3,9 +3,8 @@ import '../res/styles/App.css'
 import Reboot from 'material-ui/Reboot'
 import { styles } from './styles/pages/MainRouterLayoutPage'
 import Grid from 'material-ui/Grid'
-import Paper from 'material-ui/Paper'
 import HeaderBar from './components/header/HeaderBar'
-
+import TabContainer from './components/menu/TabContainer'
 class App extends Component {
   render() {
     const { classes } = this.props
@@ -13,6 +12,19 @@ class App extends Component {
       <div className="container">
         <Reboot />
         <HeaderBar />
+        <div className={classes.root}>
+          <Grid container spacing={0}>
+            <Grid
+              item
+              md={12}
+              container={true}
+              direction="column"
+              justify="center"
+            >
+              <TabContainer />
+            </Grid>
+          </Grid>
+        </div>
       </div>
     )
   }

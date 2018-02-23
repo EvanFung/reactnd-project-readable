@@ -1,5 +1,4 @@
 import React from 'react'
-import { withStyles } from 'material-ui/styles'
 import AppBar from 'material-ui/AppBar'
 import Toolbar from 'material-ui/Toolbar'
 import Typography from 'material-ui/Typography'
@@ -8,14 +7,7 @@ import MenuIcon from 'material-ui-icons/Menu'
 import styles from '../../styles/header/HeaderBar'
 import Drawer from 'material-ui/Drawer'
 import ListSubheader from 'material-ui/List/ListSubheader'
-import List, { ListItem, ListItemIcon, ListItemText } from 'material-ui/List'
-import Divider from 'material-ui/Divider'
-import InboxIcon from 'material-ui-icons/MoveToInbox'
-import DraftsIcon from 'material-ui-icons/Drafts'
-import SendIcon from 'material-ui-icons/Send'
-import ExpandLess from 'material-ui-icons/ExpandLess'
-import ExpandMore from 'material-ui-icons/ExpandMore'
-import StarBorder from 'material-ui-icons/StarBorder'
+import List, { ListItem, ListItemText } from 'material-ui/List'
 
 class HeaderBar extends React.Component {
   state = {
