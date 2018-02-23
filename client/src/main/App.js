@@ -5,6 +5,7 @@ import { styles } from './styles/pages/MainRouterLayoutPage'
 import Grid from 'material-ui/Grid'
 import HeaderBar from './components/header/HeaderBar'
 import TabContainer from './components/menu/TabContainer'
+import AddPostTooltips from './components/menu/Tooltips'
 class App extends Component {
   render() {
     const { classes } = this.props
@@ -25,6 +26,7 @@ class App extends Component {
             </Grid>
           </Grid>
         </div>
+        <AddPostTooltips />
       </div>
     )
   }
