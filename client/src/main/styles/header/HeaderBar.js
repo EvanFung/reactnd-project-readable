@@ -1,6 +1,6 @@
 import { withStyles } from 'material-ui/styles'
 //drawer menu takes up 40% of the screen
-const drawerMenuWidth = document.documentElement.clientWidth * 0.4
+const drawerMenuWidth = document.documentElement.clientWidth * 0.3
 const option = theme => ({
   root: {
     width: '100%'
@@ -14,7 +14,8 @@ const option = theme => ({
     flex: 1
   },
   drawerMenu: {
-    width: drawerMenuWidth
+    width: drawerMenuWidth,
+    'text-align': 'center'
   }
 })
 

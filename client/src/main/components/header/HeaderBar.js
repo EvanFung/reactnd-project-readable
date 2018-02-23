@@ -58,26 +58,17 @@ class HeaderBar extends React.Component {
             <List
               component="nav"
               subheader={
-                <ListSubheader component="div">Category</ListSubheader>
+                <ListSubheader component="nav">Category</ListSubheader>
               }
             >
-              <ListItem button>
-                <ListItemIcon>
-                  <SendIcon />
-                </ListItemIcon>
-                <ListItemText omset primary="React" />
+              <ListItem button divider>
+                <ListItemText primary="React" />
               </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <SendIcon />
-                </ListItemIcon>
-                <ListItemText omset primary="Redux" />
+              <ListItem button divider>
+                <ListItemText primary="Redux" />
               </ListItem>
-              <ListItem button>
-                <ListItemIcon>
-                  <SendIcon />
-                </ListItemIcon>
-                <ListItemText omset primary="Recer" />
+              <ListItem button divider>
+                <ListItemText primary="Recer" />
               </ListItem>
             </List>
           </div>

@@ -16,6 +16,9 @@ class PostCardItem extends React.Component {
               R
             </Avatar>
           }
+          action={
+
+          }
         />
       </Card>
     </div>
