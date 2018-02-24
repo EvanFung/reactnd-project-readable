@@ -8,7 +8,7 @@ function Tooltips(props) {
   return (
     <div>
       <Tooltip title="Add post">
-        <Button variant="fab" color="secondary" className={classes.absolute}>
+        <Button variant="fab" color="secondary" className={classes.fixed}>
           <AddIcon />
         </Button>
       </Tooltip>

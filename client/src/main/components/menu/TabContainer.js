@@ -2,7 +2,6 @@ import React from 'react'
 import Tabs, { Tab } from 'material-ui/Tabs'
 import SwipeableViews from 'react-swipeable-views'
 import Typography from 'material-ui/Typography'
-import AppBar from 'material-ui/AppBar'
 import styles from '../../styles/menu/TabContainer'
 class TabContainer extends React.Component {
   state = {

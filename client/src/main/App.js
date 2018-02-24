@@ -6,6 +6,7 @@ import Grid from 'material-ui/Grid'
 import HeaderBar from './components/header/HeaderBar'
 import TabContainer from './components/menu/TabContainer'
 import AddPostTooltips from './components/menu/Tooltips'
+import PostListContainer from './components/posts/list/PostListContainer'
 class App extends Component {
   render() {
     const { classes } = this.props
@@ -23,6 +24,13 @@ class App extends Component {
               justify="center"
             >
               <TabContainer />
+            </Grid>
+            <Grid container spacing={0}>
+              <Grid item md={2} />
+              <Grid item md={8} container={true} direction="column">
+                <PostListContainer />
+              </Grid>
+              <Grid item md={2} />
             </Grid>
           </Grid>
         </div>

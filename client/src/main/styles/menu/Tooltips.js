@@ -1,12 +1,15 @@
 import { withStyles } from 'material-ui/styles'
 const option = theme => ({
-  fab: {
-    margin: theme.spacing.unit * 2
+  root: {
+    fontSize: 1
   },
-  absolute: {
-    position: 'absolute',
-    bottom: theme.spacing.unit * 2,
-    right: theme.spacing.unit * 3
+  fab: {
+    margin: theme.spacing.unit * 1
+  },
+  fixed: {
+    position: 'fixed',
+    bottom: 20,
+    right: 20
   }
 })
 export default withStyles(option)
