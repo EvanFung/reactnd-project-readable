@@ -10,6 +10,13 @@ const option = theme => ({
       transition: '0.5 all',
       cursor: 'pointer'
     }
+  },
+  footer: {
+    display: 'flex',
+    alignItems: 'center',
+    width: '100%',
+    borderBottom: '1px solid #ebebeb',
+    justifyContent: 'space-between'
   }
 })
 

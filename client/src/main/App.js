@@ -26,11 +26,11 @@ class App extends Component {
               <TabContainer />
             </Grid>
             <Grid container spacing={0}>
-              <Grid item md={2} />
-              <Grid item md={8} container={true} direction="column">
+              <Grid item md={1} />
+              <Grid item md={10} container={true} direction="column">
                 <PostListContainer />
               </Grid>
-              <Grid item md={2} />
+              <Grid item md={1} />
             </Grid>
           </Grid>
         </div>

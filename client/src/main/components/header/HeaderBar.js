@@ -23,8 +23,8 @@ class HeaderBar extends React.Component {
     const { classes } = this.props
     return (
       <div className={classes.root}>
-        <AppBar position="static">
-          <Toolbar>
+        <AppBar position="static" className={classes.root}>
+          <Toolbar className={classes.typography}>
             <IconButton
               className={classes.menuButton}
               color="inherit"
@@ -32,11 +32,7 @@ class HeaderBar extends React.Component {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              variant="title"
-              color="inherit"
-              className={classes.typography}
-            >
+            <Typography variant="title" color="inherit">
               Category
             </Typography>
           </Toolbar>
