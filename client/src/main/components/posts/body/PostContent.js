@@ -7,15 +7,25 @@ import Button from 'material-ui/Button'
 import styles from '../../../styles/post/body/PostContent'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
 import IconButton from 'material-ui/IconButton'
-
+import Menu, { MenuItem } from 'material-ui/Menu'
 class PostContent extends React.Component {
+  state = {
+    anchorEl: null
+  }
   constructor(props) {
     super(props)
   }
 
+  handleClickMoreIcon = event => {
+    this.setState({ anchorEl: event.currentTarget })
+  }
+  handleCloseMoreIcon = () => {
+    this.setState({ anchorEl: null })
+  }
+
   render() {
     const { classes } = this.props
-
+    const { anchorEl } = this.state
     return (
       <div>
         <div className={classes.root}>
@@ -26,9 +36,22 @@ class PostContent extends React.Component {
             action={
               <div>
                 <Button className={classes.postLabel}>React</Button>
-                <IconButton>
+                <IconButton
+                  onClick={this.handleClickMoreIcon}
+                  aria-owns={anchorEl ? 'post-menu' : null}
+                  aria-haspopup="true"
+                >
                   <MoreVertIcon />
                 </IconButton>
+                <Menu
+                  id="post-menu"
+                  anchorEl={anchorEl}
+                  open={Boolean(anchorEl)}
+                  onClose={this.handleCloseMoreIcon}
+                >
+                  <MenuItem onClick={this.handleCloseMoreIcon}>Edit</MenuItem>
+                  <MenuItem onClick={this.handleCloseMoreIcon}>Delete</MenuItem>
+                </Menu>
               </div>
             }
           />
