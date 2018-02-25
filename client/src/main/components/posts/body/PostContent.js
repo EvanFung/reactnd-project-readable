@@ -8,9 +8,17 @@ import styles from '../../../styles/post/body/PostContent'
 import MoreVertIcon from 'material-ui-icons/MoreVert'
 import IconButton from 'material-ui/IconButton'
 import Menu, { MenuItem } from 'material-ui/Menu'
+import Dialog, {
+  DialogActions,
+  DialogContent,
+  DialogContentText,
+  DialogTitle
+} from 'material-ui/Dialog'
+
 class PostContent extends React.Component {
   state = {
-    anchorEl: null
+    anchorEl: null,
+    dialogOpen: false
   }
   constructor(props) {
     super(props)
@@ -21,6 +29,15 @@ class PostContent extends React.Component {
   }
   handleCloseMoreIcon = () => {
     this.setState({ anchorEl: null })
+  }
+
+  handleDialogOpen = () => {
+    this.handleCloseMoreIcon()
+    this.setState({ dialogOpen: true })
+  }
+
+  handleDialogClose = () => {
+    this.setState({ dialogOpen: false })
   }
 
   render() {
@@ -49,8 +66,8 @@ class PostContent extends React.Component {
                   open={Boolean(anchorEl)}
                   onClose={this.handleCloseMoreIcon}
                 >
-                  <MenuItem onClick={this.handleCloseMoreIcon}>Edit</MenuItem>
-                  <MenuItem onClick={this.handleCloseMoreIcon}>Delete</MenuItem>
+                  <MenuItem onClick={this.handleDialogOpen}>Edit</MenuItem>
+                  <MenuItem onClick={this.handleDialogOpen}>Delete</MenuItem>
                 </Menu>
               </div>
             }
@@ -59,6 +76,30 @@ class PostContent extends React.Component {
         <CardContent>
           <Typography>Article content</Typography>
         </CardContent>
+
+        <Dialog
+          open={this.state.dialogOpen}
+          onClose={this.handleDialogClose}
+          aria-labelledby="alert-dialog-title"
+          aria-describedby="alter-dialog-description"
+        >
+          <DialogTitle id="alter-dialog-title">
+            {'Are you sure delete this post?'}
+          </DialogTitle>
+          <DialogContent>
+            <DialogContentText id="alert-dialog-description">
+              A deleted post cannot be recovered.
+            </DialogContentText>
+          </DialogContent>
+          <DialogActions>
+            <Button onClick={this.handleDialogClose} color="primary">
+              Disagree
+            </Button>
+            <Button onClick={this.handleDialogClose} color="primary">
+              Agree
+            </Button>
+          </DialogActions>
+        </Dialog>
       </div>
     )
   }

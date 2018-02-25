@@ -12,7 +12,8 @@ const option = theme => ({
     fontSize: '14px',
     minHeight: '0 !important',
     padding: '5px',
-    width: '30px'
+    width: '30px',
+    margin: theme.spacing.unit * 0.5
   }
 })
 
