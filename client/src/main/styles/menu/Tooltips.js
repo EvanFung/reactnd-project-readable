@@ -1,7 +1,7 @@
 import { withStyles } from 'material-ui/styles'
 const option = theme => ({
   root: {
-    fontSize: 1
+    opacity: 0.7
   },
   fab: {
     margin: theme.spacing.unit * 1

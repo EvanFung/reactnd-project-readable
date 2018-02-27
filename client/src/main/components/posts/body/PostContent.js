@@ -84,7 +84,7 @@ class PostContent extends React.Component {
           aria-describedby="alter-dialog-description"
         >
           <DialogTitle id="alter-dialog-title">
-            {'Are you sure delete this post?'}
+            {'Are you sure to delete this post?'}
           </DialogTitle>
           <DialogContent>
             <DialogContentText id="alert-dialog-description">

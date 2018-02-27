@@ -7,8 +7,13 @@ function Tooltips(props) {
   const { classes } = props
   return (
     <div>
-      <Tooltip title="Add post">
-        <Button variant="fab" color="secondary" className={classes.fixed}>
+      <Tooltip title="Add post" className={classes.root}>
+        <Button
+          onClick={props.onTooltipsClick}
+          variant="fab"
+          color="secondary"
+          className={classes.fixed}
+        >
           <AddIcon />
         </Button>
       </Tooltip>

@@ -7,7 +7,17 @@ import HeaderBar from './components/header/HeaderBar'
 import TabContainer from './components/menu/TabContainer'
 import AddPostTooltips from './components/menu/Tooltips'
 import PostListContainer from './components/posts/list/PostListContainer'
+import NewPost from './components/posts/create/NewPost'
 class App extends Component {
+  state = {
+    formDialogOpen: false
+  }
+  handlePostFormOpen = () => {
+    this.setState({ formDialogOpen: true })
+  }
+  handlePostFormClose = () => {
+    this.setState({ formDialogOpen: false })
+  }
   render() {
     const { classes } = this.props
     return (
@@ -33,8 +43,12 @@ class App extends Component {
               <Grid item md={1} />
             </Grid>
           </Grid>
+          <AddPostTooltips onTooltipsClick={this.handlePostFormOpen} />
+          <NewPost
+            handlePostFormClose={this.handlePostFormClose}
+            formDialogOpen={this.state.formDialogOpen}
+          />
         </div>
-        <AddPostTooltips />
       </div>
     )
   }

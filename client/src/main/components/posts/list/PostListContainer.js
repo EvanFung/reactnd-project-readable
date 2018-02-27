@@ -6,10 +6,6 @@ const PostListContainer = props => {
   return (
     <div>
       <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
-      <PostCard />
     </div>
   )
 }
