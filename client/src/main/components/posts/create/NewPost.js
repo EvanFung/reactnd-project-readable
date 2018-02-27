@@ -11,54 +11,90 @@ import Dialog, {
 import Card, { CardHeader, CardContent } from 'material-ui/Card'
 import Avatar from 'material-ui/Avatar'
 import Chip from 'material-ui/Chip'
-import { FormControl, FormHelperText } from 'material-ui/Form'
+import {
+  FormControl,
+  FormHelperText,
+  FormGroup,
+  FormControlLabel
+} from 'material-ui/Form'
+import styles from '../../../styles/post/create/NewPost'
+import Radio, { RadioGroup } from 'material-ui/Radio'
 class NewPost extends React.Component {
+  state = {
+    selectedValue: 'react'
+  }
   constructor(props) {
     super(props)
   }
 
+  handleRBChange = event => {
+    this.setState({ selectedValue: event.target.value })
+  }
+
   render() {
+    const { classes } = this.props
     return (
       <Dialog
         open={this.props.formDialogOpen}
         onClose={this.props.handlePostFormClose}
         aria-labelledby="form-dialog-title"
+        className={classes.root}
       >
-        <DialogTitle id="form-dialog-title">New post</DialogTitle>
-        <DialogContent>
+        <div>
           <form noValidate autoComplete="off">
-            <FormControl>
-              <Chip label="React" />
-              <Chip label="Redux" />
-              <Chip label="React Native" />
-            </FormControl>
-            <FormControl>
-              <Input
-                placeholder="Title"
-                fullWidth="true"
-                inputProps={{ 'aria-label': 'title' }}
-              />
-            </FormControl>
-            <FormControl>
-              <Input
-                placeholder="body"
-                fullWidth="true"
-                inputProps={{ 'aria-label': 'body' }}
-              />
-            </FormControl>
+            <DialogContent>
+              <FormGroup>
+                <RadioGroup
+                  aria-label="category"
+                  name="category-radio"
+                  value={this.state.selectedValue}
+                  onChange={this.handleRBChange}
+                  row
+                >
+                  <FormControlLabel
+                    value="react"
+                    control={<Radio />}
+                    label="React"
+                  />
+                  <FormControlLabel
+                    value="redux"
+                    control={<Radio />}
+                    label="Redux"
+                  />
+                  <FormControlLabel
+                    value="Reactnative"
+                    control={<Radio />}
+                    label="React Native"
+                  />
+                </RadioGroup>
+              </FormGroup>
+              <FormGroup>
+                <Input
+                  placeholder="Title"
+                  inputProps={{ 'aria-label': 'title' }}
+                />
+              </FormGroup>
+              <FormGroup>
+                <Input
+                  placeholder="Contents"
+                  inputProps={{ 'aria-label': 'body' }}
+                  multiline={true}
+                />
+              </FormGroup>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={this.props.handlePostFormClose} color="primary">
+                Cancel
+              </Button>
+              <Button onClick={this.props.handlePostFormClose} color="primary">
+                Post
+              </Button>
+            </DialogActions>
           </form>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={this.props.handlePostFormClose} color="primary">
-            Cancel
-          </Button>
-          <Button onClick={this.props.handlePostFormClose} color="primary">
-            Post
-          </Button>
-        </DialogActions>
+        </div>
       </Dialog>
     )
   }
 }
 
-export default NewPost
+export default styles(NewPost)
