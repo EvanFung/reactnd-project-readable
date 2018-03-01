@@ -26,18 +26,10 @@ class App extends Component {
         <HeaderBar />
         <div className={classes.root}>
           <Grid container spacing={0}>
-            <Grid
-              item
-              md={12}
-              container={true}
-              direction="column"
-              justify="center"
-            >
-              <TabContainer />
-            </Grid>
             <Grid container spacing={0}>
               <Grid item md={1} />
               <Grid item md={10} container={true} direction="column">
+                <TabContainer />
                 <PostListContainer />
               </Grid>
               <Grid item md={1} />
