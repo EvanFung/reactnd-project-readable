@@ -5,6 +5,7 @@ import CommentIcon from 'material-ui-icons/Comment'
 import Typography from 'material-ui/Typography'
 import ExpandMoreIcon from 'material-ui-icons/ExpandMore'
 import styles from '../../../styles/post/button/CommentButton'
+import { Link } from 'react-router-dom'
 class CommentButton extends React.Component {
   constructor(props) {
     super(props)
@@ -15,13 +16,17 @@ class CommentButton extends React.Component {
     return (
       <div className={classes.root}>
         <CardActions disableActionSpacing>
-          <IconButton>
-            <CommentIcon />
-          </IconButton>
+          <Link to={`/post`}>
+            <IconButton>
+              <CommentIcon />
+            </IconButton>
+          </Link>
           <Typography>3</Typography>
-          <IconButton>
-            <ExpandMoreIcon />
-          </IconButton>
+          <Link to={`/post`}>
+            <IconButton>
+              <ExpandMoreIcon />
+            </IconButton>
+          </Link>
         </CardActions>
       </div>
     )

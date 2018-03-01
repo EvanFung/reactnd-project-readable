@@ -4,6 +4,7 @@ import PostContent from '../body/PostContent'
 import styles from '../../../styles/post/PostCardItem'
 import UpDownVoter from '../button/UpDownVoter'
 import CommentButton from '../button/CommentButton'
+import { Link } from 'react-router-dom'
 class PostCardItem extends React.Component {
   constructor(props) {
     super(props)

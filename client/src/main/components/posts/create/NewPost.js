@@ -38,12 +38,11 @@ class NewPost extends React.Component {
         open={this.props.formDialogOpen}
         onClose={this.props.handlePostFormClose}
         aria-labelledby="form-dialog-title"
-        className={classes.root}
       >
         <div>
           <form noValidate autoComplete="off">
             <DialogContent>
-              <FormGroup>
+              <FormGroup className={classes.root}>
                 <RadioGroup
                   aria-label="category"
                   name="category-radio"
@@ -68,13 +67,20 @@ class NewPost extends React.Component {
                   />
                 </RadioGroup>
               </FormGroup>
-              <FormGroup>
+              <FormGroup className={classes.root}>
                 <Input
                   placeholder="Title"
                   inputProps={{ 'aria-label': 'title' }}
+                  autoFocus
                 />
               </FormGroup>
-              <FormGroup>
+              <FormGroup className={classes.root}>
+                <Input
+                  placeholder="Author"
+                  inputProps={{ 'aria-label': 'Author' }}
+                />
+              </FormGroup>
+              <FormGroup className={classes.root}>
                 <Input
                   placeholder="Contents"
                   inputProps={{ 'aria-label': 'body' }}

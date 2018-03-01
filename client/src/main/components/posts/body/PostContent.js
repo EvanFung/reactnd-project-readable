@@ -74,7 +74,8 @@ class PostContent extends React.Component {
           />
         </div>
         <CardContent>
-          <Typography>Article content</Typography>
+          <Typography variant="caption">Article title</Typography>
+          <Typography align="center">Article content</Typography>
         </CardContent>
 
         <Dialog
