@@ -1,8 +1,8 @@
 import React from 'react'
-import PostListContainer from '../post/list/PostListContainer'
+import PostListContainer from '../posts/list/PostListContainer'
 import TabContainer from '../menu/TabContainer'
 
-class AllPostPage extends React.Component {
+class AllPostsPage extends React.Component {
   render() {
     return (
       <div>
@@ -12,4 +12,4 @@ class AllPostPage extends React.Component {
     )
   }
 }
-export default AllPostPage
+export default AllPostsPage
