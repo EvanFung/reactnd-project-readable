@@ -10,6 +10,7 @@ import AddPostTooltips from './components/menu/Tooltips'
 import PostListContainer from './components/posts/list/PostListContainer'
 import NewPost from './components/posts/create/NewPost'
 import AllPostsPage from './components/pages/AllPostsPage'
+import PostDetailsPage from './components/pages/PostDetailsPage'
 class App extends Component {
   state = {
     formDialogOpen: false
@@ -33,6 +34,7 @@ class App extends Component {
               <Grid item md={10} container={true} direction="column">
                 <Switch>
                   <Route exact path="/" component={AllPostsPage} />
+                  <Route exact path="/post" component={PostDetailsPage} />
                 </Switch>
               </Grid>
               <Grid item md={1} />
