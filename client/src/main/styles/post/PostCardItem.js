@@ -8,7 +8,6 @@ const option = theme => ({
     '&:hover': {
       background: '#f9f9f9',
       transition: '0.5 all',
-      cursor: 'pointer'
     }
   },
   footer: {

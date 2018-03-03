@@ -1,4 +1,4 @@
-import { FETCH_POSTS,FETCH_POSTS_SUCCESS } from "../actions/post";
+import { FETCH_POSTS_SUCCESS } from "../actions/post";
 
 export function posts(state = [], action) {
   let updatedState = state.slice();
