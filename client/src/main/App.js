@@ -1,28 +1,28 @@
-import React, { Component } from 'react'
-import '../res/styles/App.css'
-import Reboot from 'material-ui/Reboot'
-import { styles } from './styles/pages/MainRouterLayoutPage'
-import { Route, Switch } from 'react-router-dom'
-import Grid from 'material-ui/Grid'
-import HeaderBar from './components/header/HeaderBar'
-import TabContainer from './components/menu/TabContainer'
-import AddPostTooltips from './components/menu/Tooltips'
-import PostListContainer from './components/posts/list/PostListContainer'
-import NewPost from './components/posts/create/NewPost'
-import AllPostsPage from './components/pages/AllPostsPage'
-import PostDetailsPage from './components/pages/PostDetailsPage'
+import React, { Component } from "react";
+import "../res/styles/App.css";
+import Reboot from "material-ui/Reboot";
+import { styles } from "./styles/pages/MainRouterLayoutPage";
+import { Route, Switch } from "react-router-dom";
+import Grid from "material-ui/Grid";
+import HeaderBar from "./components/header/HeaderBar";
+import TabContainer from "./components/menu/TabContainer";
+import AddPostTooltips from "./components/menu/Tooltips";
+import PostListContainer from "./components/posts/list/PostListContainer";
+import NewPost from "./components/posts/create/NewPost";
+import AllPostsPage from "./components/pages/AllPostsPage";
+import PostDetailsPage from "./components/pages/PostDetailsPage";
 class App extends Component {
   state = {
     formDialogOpen: false
-  }
+  };
   handlePostFormOpen = () => {
-    this.setState({ formDialogOpen: true })
-  }
+    this.setState({ formDialogOpen: true });
+  };
   handlePostFormClose = () => {
-    this.setState({ formDialogOpen: false })
-  }
+    this.setState({ formDialogOpen: false });
+  };
   render() {
-    const { classes } = this.props
+    const { classes } = this.props;
     return (
       <div className="container">
         <Reboot />
@@ -47,7 +47,7 @@ class App extends Component {
           />
         </div>
       </div>
-    )
+    );
   }
 }
-export default styles(App)
+export default styles(App);
