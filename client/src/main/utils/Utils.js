@@ -26,6 +26,17 @@ export const date = timestamp => {
     "Nov",
     "Dec"
   ];
-  const formattedDate = weekday[pubDate.getDay()] + '-' + monthName[pubDate.getMonth()] + '-' + pubDate.getDate() + '-' + pubDate.getFullYear()
-  return formattedDate
+  const formattedDate =
+    weekday[pubDate.getDay()] +
+    "-" +
+    monthName[pubDate.getMonth()] +
+    "-" +
+    pubDate.getDate() +
+    "-" +
+    pubDate.getFullYear();
+  return formattedDate;
+};
+
+export const username = (str = "") => {
+  return typeof str !== "string" ? "" : str.substring(0, 2).toUpperCase();
 };

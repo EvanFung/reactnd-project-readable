@@ -22,11 +22,6 @@ class CommentButton extends React.Component {
             </IconButton>
           </Link>
           <Typography>3</Typography>
-          <Link to={`/post`}>
-            <IconButton>
-              <ExpandMoreIcon />
-            </IconButton>
-          </Link>
         </CardActions>
       </div>
     )
