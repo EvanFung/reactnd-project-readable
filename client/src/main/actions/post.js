@@ -28,3 +28,9 @@ export function fetchPosts() {
       });
   };
 }
+
+export function updatePostScore({post,voteType}) {
+  return dispatch => {
+    
+  }
+}

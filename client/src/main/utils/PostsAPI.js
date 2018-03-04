@@ -1,4 +1,3 @@
-
 const api = "http://localhost:5001";
 
 //Generate a unique token for storing your data on the backen server
@@ -28,4 +27,15 @@ export const getAll = () => {
 
 export const get = postId => {
   return fetch(`${api}/posts/${postId}`, { headers }).then(res => res.json());
+};
+
+export const vote = (post, option) => {
+  return fetch(`${api}/posts/${post.id}`, {
+    method: "POST",
+    headers: {
+      ...headers,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({ option })
+  }).then(res => res.json());
 };
