@@ -1,7 +1,5 @@
 import React from 'react'
 import Tabs, { Tab } from 'material-ui/Tabs'
-import SwipeableViews from 'react-swipeable-views'
-import Typography from 'material-ui/Typography'
 import styles from '../../styles/menu/TabContainer'
 class TabContainer extends React.Component {
   state = {
@@ -11,7 +9,6 @@ class TabContainer extends React.Component {
     this.setState({ value })
   }
   render() {
-    const { classes } = this.props
     return (
       <div>
         <Tabs

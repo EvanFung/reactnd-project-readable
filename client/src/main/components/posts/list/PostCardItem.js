@@ -16,8 +16,8 @@ class PostCardItem extends React.Component {
         <Card className={classes.root}>
           <PostContent post={this.props.post} />
           <div className={classes.footer}>
-            <UpDownVoter />
-            <CommentButton />
+            <UpDownVoter post={this.props.post}/>
+            <CommentButton post={this.props.post} />
           </div>
         </Card>
       </div>

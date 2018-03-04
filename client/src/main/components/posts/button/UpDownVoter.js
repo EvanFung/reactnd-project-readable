@@ -19,11 +19,10 @@ class UpDownVoter extends React.Component {
           <IconButton aria-label="Add to favorites">
             <ThumbUp />
           </IconButton>
-          <Typography>8</Typography>
+          <Typography>{this.props.post.voteScore}</Typography>
           <IconButton aria-label="Add to favorites">
             <ThumbDown />
           </IconButton>
-          <Typography>2</Typography>
         </CardActions>
       </div>
     )

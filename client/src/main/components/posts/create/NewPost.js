@@ -1,18 +1,11 @@
 import React from 'react'
 import Button from 'material-ui/Button'
 import Input from 'material-ui/Input'
-import TextField from 'material-ui/TextField'
 import Dialog, {
   DialogActions,
   DialogContent,
-  DialogContentText,
-  DialogTitle
 } from 'material-ui/Dialog'
-import Card, { CardHeader, CardContent } from 'material-ui/Card'
-import Avatar from 'material-ui/Avatar'
-import Chip from 'material-ui/Chip'
 import {
-  FormControl,
   FormHelperText,
   FormGroup,
   FormControlLabel
@@ -22,9 +15,6 @@ import Radio, { RadioGroup } from 'material-ui/Radio'
 class NewPost extends React.Component {
   state = {
     selectedValue: 'react'
-  }
-  constructor(props) {
-    super(props)
   }
 
   handleRBChange = event => {

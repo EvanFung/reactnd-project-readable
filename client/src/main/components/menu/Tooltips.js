@@ -14,7 +14,7 @@ function Tooltips(props) {
           color="secondary"
           className={classes.fixed}
         >
-          <AddIcon />
+          <AddIcon/>
         </Button>
       </Tooltip>
     </div>

@@ -14,16 +14,18 @@ import Dialog, {
   DialogContentText,
   DialogTitle
 } from "material-ui/Dialog";
-import * as Utils from '../../../utils/Utils'
+import * as Utils from "../../../utils/Utils";
 class PostContent extends React.Component {
   state = {
     anchorEl: null,
-    dialogOpen: false
+    dialogOpen: false,
+    isEditing: false,
+    title: this.props.post.title,
+    category: this.props.post.category,
+    body: this.props.post.body,
+    fullAuthorName: this.props.post.author,
+    shortAuthorName: this.props.post.author
   };
-  constructor(props) {
-    super(props);
-  }
-
   handleClickMoreIcon = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
@@ -40,11 +42,33 @@ class PostContent extends React.Component {
     this.setState({ dialogOpen: false });
   };
 
+  handleEditViewOpen = () => {
+    this.handleCloseMoreIcon();
+    this.setState({ isEditing: true });
+  };
+
+  handleEditViewClose = () => {
+    this.setState({ isEditing: false });
+  };
+
+  onTitleChange = e => {
+    this.setState({ title: e.target.value });
+  };
+  onBodyChange = e => {
+    this.setState({ body: e.target.value });
+  };
+
+  closePostEditVie = e => {
+    e.preventDefault();
+    e.nativeEvent.stopImmediatePropagation();
+    e.stopPropagation();
+    this.handleEditViewClose();
+  };
   render() {
     const { classes, post } = this.props;
-    const { anchorEl } = this.state;
+    const { anchorEl, isEditing } = this.state;
     const MAX_LENGTH = 250;
-    const postIsTooLong = post.body.length > MAX_LENGTH
+    const postIsTooLong = post.body.length > MAX_LENGTH;
     return (
       <div>
         <div className={classes.root}>
@@ -68,17 +92,59 @@ class PostContent extends React.Component {
                   open={Boolean(anchorEl)}
                   onClose={this.handleCloseMoreIcon}
                 >
-                  <MenuItem onClick={this.handleDialogOpen}>Edit</MenuItem>
+                  <MenuItem onClick={this.handleEditViewOpen}>Edit</MenuItem>
                   <MenuItem onClick={this.handleDialogOpen}>Delete</MenuItem>
                 </Menu>
               </div>
             }
           />
         </div>
-        <CardContent>
-          <Typography variant="caption">{post.title}</Typography>
-          <Typography>{postIsTooLong ? `${post.body.substring(0,MAX_LENGTH)}....`:`${post.body}`}</Typography>
-        </CardContent>
+        {!isEditing ? (
+          <CardContent>
+            <Typography variant="caption">{post.title}</Typography>
+            <Typography>
+              {postIsTooLong
+                ? `${post.body.substring(0, MAX_LENGTH)}....`
+                : `${post.body}`}
+            </Typography>
+          </CardContent>
+        ) : (
+          <CardContent>
+            <form noValidate autoComplete="off">
+              <div className={classes.postSaveCancelDiv}>
+                <Button
+                  color="primary"
+                  className={classes.postSaveCancelButton}
+                  onClick={this.closePostEditVie}
+                >
+                  cancel
+                </Button>
+                <Button
+                  color="primary"
+                  className={classes.postSaveCancelButton}
+                >
+                  save
+                </Button>
+              </div>
+              <Input
+                placeholder="Post title"
+                fullWidth={true}
+                defaultValue={this.state.title}
+                margin="dense"
+                onChange={this.onTitleChange}
+                disableUnderline={true}
+              />
+              <Input
+                placeholder="Post body"
+                fullWidth={true}
+                defaultValue={this.state.body}
+                margin="dense"
+                onChange={this.onBodyChange}
+                disableUnderline={true}
+              />
+            </form>
+          </CardContent>
+        )}
 
         <Dialog
           open={this.state.dialogOpen}

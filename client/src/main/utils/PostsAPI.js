@@ -1,4 +1,3 @@
-import { generateRandomId } from "./Utils";
 
 const api = "http://localhost:5001";
 

@@ -14,6 +14,15 @@ const option = theme => ({
     padding: '5px',
     width: '30px',
     margin: theme.spacing.unit * 0.5
+  },
+  postSaveCancelDiv: {
+    display: 'flex',
+    float: 'right',
+  },
+  postSaveCancelButton: {
+    margin: theme.spacing.unit,
+    color: theme.palette.secondary,
+    fontWeight: 'bold'
   }
 })
 
