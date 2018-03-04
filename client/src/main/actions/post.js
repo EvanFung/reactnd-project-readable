@@ -39,7 +39,7 @@ export function updatePostScore({
   voteType
 }) {
   //if we fetched the data, return an action
-  if (status === "success" || statsu === "error") {
+  if (status === "success" || status === "error") {
     return {
       type: UPDATE_POST_SCORE,
       status,
