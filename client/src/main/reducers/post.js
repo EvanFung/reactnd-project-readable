@@ -8,7 +8,10 @@ export function posts(state = [], action) {
       break;
     case UPDATE_POST_SCORE:
       const postIndex = updatedState.findIndex(post => post.id === action.response.id)
-      updatedState[postIndex].voteScore = action.response.voteScore;
+      updatedState[postIndex] = {
+        ...updatedState[postIndex],
+        voteScore: action.response.voteScore
+      }
       break;
     default:
       console.warn(`Unknown action ${action.type}`);
