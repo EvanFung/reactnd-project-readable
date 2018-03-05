@@ -7,15 +7,6 @@ import ThumbDown from "material-ui-icons/ThumbDown";
 import classnames from "classnames";
 import styles from "../../../styles/post/button/UpDownVoter";
 class UpDownVoter extends React.Component {
-  state = {
-    voteScore:this.props.post.voteScore
-  }
-
-  handleUpdateScore = () => {
-    this.setState({voteScore: this.props.post.voteScore})
-  }
-
-
   render() {
     const { classes, post, updatePostScore } = this.props;
     return (
@@ -23,20 +14,14 @@ class UpDownVoter extends React.Component {
         <CardActions disableActionSpacing className={classes.root}>
           <IconButton
             aria-label="Add to favorites"
-            onClick={() => {
-              updatePostScore(post, "upVote");
-              this.handleUpdateScore();
-            }}
+            onClick={()=> {updatePostScore(post,'upVote')}}
           >
             <ThumbUp />
           </IconButton>
-          <Typography>{this.state.voteScore}</Typography>
+          <Typography>{post.voteScore}</Typography>
           <IconButton
             aria-label="Add to favorites"
-            onClick={() => {
-              updatePostScore(post, "downVote");
-              this.handleUpdateScore();
-            }}
+            onClick={()=> {updatePostScore(post,'downVote')}}
           >
             <ThumbDown />
           </IconButton>

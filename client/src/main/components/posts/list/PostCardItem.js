@@ -4,20 +4,18 @@ import PostContent from "../body/PostContent";
 import styles from "../../../styles/post/PostCardItem";
 import UpDownVoter from "../button/UpDownVoter";
 import CommentButton from "../button/CommentButton";
-import { connect } from "react-redux";
-import * as PostActions from "../../../actions/post";
 class PostCardItem extends React.Component {
-  constructor(props) {
-    super(props);
-  }
   render() {
-    const { classes,actions } = this.props;
+    const { classes, updatePostScore } = this.props;
     return (
       <div>
         <Card className={classes.root}>
           <PostContent post={this.props.post} />
           <div className={classes.footer}>
-            <UpDownVoter post={this.props.post} updatePostScore={actions.updatePostScore} />
+            <UpDownVoter
+              post={this.props.post}
+              updatePostScore={updatePostScore}
+            />
             <CommentButton post={this.props.post} />
           </div>
         </Card>
@@ -25,12 +23,5 @@ class PostCardItem extends React.Component {
     );
   }
 }
-const mapDispatchToProps = dispatch => {
-  return {
-    actions: {
-      updatePostScore: (post, voteType) =>
-        dispatch(PostActions.updatePostScore({ post, voteType }))
-    }
-  };
-};
-export default connect(null,mapDispatchToProps)(styles(PostCardItem));
+
+export default styles(PostCardItem);

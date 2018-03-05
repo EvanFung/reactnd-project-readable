@@ -57,7 +57,7 @@ export function updatePostScore({
         dispatch(updatePostScore({ status: "success", response: post }));
       })
       .catch(error => {
-        //if an error occured, dispatch an action.
+        //if an error occurred, dispatch an action.
         dispatch(updatePostScore({ status: "error", response: error }));
       });
   };
