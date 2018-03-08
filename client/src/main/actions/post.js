@@ -6,20 +6,6 @@ export const EDIT_POST = "EDIT_POST";
 export const UPDATE_POST_SCORE = "UPDATE_POST_SCORE";
 export const DELETE_POST = "DELETE_POST";
 
-export function fetchPostsSuccess(posts) {
-  return {
-    type: FETCH_POSTS_SUCCESS,
-    posts
-  };
-}
-
-export function fetchPostsFailure(error) {
-  return {
-    type: FETCH_POSTS_FAILURE,
-    error
-  };
-}
-
 export function fetchPosts() {
   return createAsyncAction(FETCH_POSTS, PostsAPI.getAll());
 }
