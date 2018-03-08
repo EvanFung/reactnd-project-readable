@@ -1,3 +1,4 @@
+import { generateRandomId } from "./Utils";
 const api = "http://localhost:5001";
 
 //Generate a unique token for storing your data on the backen server
@@ -58,5 +59,25 @@ export const remove = (post, option) => {
   return fetch(`${api}/posts/${post.id}`, {
     method: "DELETE",
     headers
+  }).then(res => res.json());
+};
+
+export const createPost = ({ title, body, author, category }) => {
+  const data = {
+    id: generateRandomId(),
+    timestamp: new Date().getTime(),
+    title,
+    body,
+    author,
+    category
+  };
+
+  return fetch(`${api}/posts`, {
+    method: "POST",
+    headers: {
+      ...headers,
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify(data)
   }).then(res => res.json());
 };
