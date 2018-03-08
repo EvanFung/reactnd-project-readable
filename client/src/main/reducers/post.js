@@ -1,10 +1,10 @@
-import { FETCH_POSTS_SUCCESS, UPDATE_POST_SCORE, EDIT_POST } from "../actions/post";
+import { FETCH_POSTS, UPDATE_POST_SCORE, EDIT_POST } from "../actions/post";
 
 export function posts(state = [], action) {
   let updatedState = state.slice();
   switch (action.type) {
-    case FETCH_POSTS_SUCCESS:
-      updatedState = action.posts;
+    case FETCH_POSTS:
+      updatedState = action.status === 'success' ? action.response : []
       break;
     case UPDATE_POST_SCORE:
       let postIndex = updatedState.findIndex(post => post.id === action.response.id)

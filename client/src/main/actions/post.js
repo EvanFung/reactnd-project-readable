@@ -21,15 +21,7 @@ export function fetchPostsFailure(error) {
 }
 
 export function fetchPosts() {
-  return dispatch => {
-    PostsAPI.getAll()
-      .then(posts => {
-        dispatch(fetchPostsSuccess(posts));
-      })
-      .catch(err => {
-        dispatch(fetchPostsFailure(err));
-      });
-  };
+  return createAsyncAction(FETCH_POSTS,PostsAPI.getAll())
 }
 
 export function updatePostScore({
