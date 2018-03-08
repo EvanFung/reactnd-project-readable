@@ -1,10 +1,10 @@
 import * as PostsAPI from "../utils/PostsAPI";
 import { createAsyncAction } from "../utils/ActionHelper";
+
 export const FETCH_POSTS = "FETCH_POSTS";
-export const FETCH_POSTS_SUCCESS = "FETCH_POSTS_SUCCESS";
 export const EDIT_POST = "EDIT_POST";
 export const UPDATE_POST_SCORE = "UPDATE_POST_SCORE";
-export const FETCH_POSTS_FAILURE = "FETCH_POSTS_FAILURE";
+export const DELETE_POST = "DELETE_POST";
 
 export function fetchPostsSuccess(posts) {
   return {
@@ -30,4 +30,8 @@ export function updatePostScore({ post, voteType }) {
 
 export function editPost({ id, title, body }) {
   return createAsyncAction(EDIT_POST, PostsAPI.editPost({ id, title, body }));
+}
+
+export function deletePost({ post }) {
+  return createAsyncAction(DELETE_POST,PostsAPI.remove(post));
 }
