@@ -3,14 +3,11 @@ import Card from 'material-ui/Card'
 import PostContent from '../posts/body/PostContent'
 import NewComment from '../posts/create/NewComment'
 import UpDownVoter from '../posts/button/UpDownVoter'
-import CommentButton from '../posts/button/CommentButton'
 import styles from '../../styles/pages/PostDetailsPage'
 import CommentBox from '../posts/body/CommentBox'
 import Divider from 'material-ui/Divider'
 class PostDetailsPage extends React.Component {
-  constructor(props) {
-    super(props)
-  }
+
 
   render() {
     const { classes } = this.props

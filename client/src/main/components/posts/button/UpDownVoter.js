@@ -4,7 +4,6 @@ import IconButton from "material-ui/IconButton";
 import Typography from "material-ui/Typography";
 import ThumbUp from "material-ui-icons/ThumbUp";
 import ThumbDown from "material-ui-icons/ThumbDown";
-import classnames from "classnames";
 import styles from "../../../styles/post/button/UpDownVoter";
 class UpDownVoter extends React.Component {
   render() {

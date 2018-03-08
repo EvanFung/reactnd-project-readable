@@ -6,7 +6,6 @@ import Dialog, {
   DialogContent,
 } from 'material-ui/Dialog'
 import {
-  FormHelperText,
   FormGroup,
   FormControlLabel
 } from 'material-ui/Form'

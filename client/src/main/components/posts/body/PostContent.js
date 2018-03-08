@@ -76,7 +76,7 @@ class PostContent extends React.Component {
     this.handleDialogClose();
   }
   render() {
-    const { classes, post, editPost } = this.props;
+    const { classes, post } = this.props;
     const { anchorEl, isEditing } = this.state;
     const MAX_LENGTH = 250;
     const postIsTooLong = post.body.length > MAX_LENGTH;
