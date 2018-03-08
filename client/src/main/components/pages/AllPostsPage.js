@@ -32,8 +32,7 @@ function mapDispatchToProps(dispatch, ownProps) {
       fetchPosts: () => dispatch(PostActions.fetchPosts()),
       updatePostScore: (post, voteType) =>
         dispatch(PostActions.updatePostScore({ post, voteType })),
-      editPost: (id, title, body) =>
-        dispatch(PostActions.editPost(id, title, body))
+      editPost: data => dispatch(PostActions.editPost(data))
     }
   };
 }

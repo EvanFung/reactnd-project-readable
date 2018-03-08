@@ -1,10 +1,11 @@
 import * as PostsAPI from "../utils/PostsAPI";
-
+import { createAsyncAction } from "../utils/ActionHelper";
 export const FETCH_POSTS = "FETCH_POSTS";
 export const FETCH_POSTS_SUCCESS = "FETCH_POSTS_SUCCESS";
 export const EDIT_POST = "EDIT_POST";
 export const UPDATE_POST_SCORE = "UPDATE_POST_SCORE";
 export const FETCH_POSTS_FAILURE = "FETCH_POSTS_FAILURE";
+
 export function fetchPostsSuccess(posts) {
   return {
     type: FETCH_POSTS_SUCCESS,
@@ -62,24 +63,6 @@ export function updatePostScore({
   };
 }
 
-export function editPost({ status = null, response = null, post }) {
-  //if we fetched the data, return an action
-  if (status === "success" || status === "error") {
-    return {
-      type: EDIT_POST,
-      status,
-      response
-    };
-  }
-  return dispatch => {
-    PostsAPI.editPost(post)
-      .then(res => {
-        console.log(`${res} got you!`);
-        dispatch(editPost({ status: "success", response: res }));
-      })
-      .catch(error => {
-        //if an error occurred, dispatch an action.
-        dispatch(editPost({ status: "error", response: error }));
-      });
-  };
+export function editPost({ id, title, body }) {
+  return createAsyncAction(EDIT_POST, PostsAPI.editPost({ id, title, body }));
 }

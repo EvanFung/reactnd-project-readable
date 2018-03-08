@@ -7,14 +7,19 @@ export function posts(state = [], action) {
       updatedState = action.posts;
       break;
     case UPDATE_POST_SCORE:
-      const postIndex = updatedState.findIndex(post => post.id === action.response.id)
+      let postIndex = updatedState.findIndex(post => post.id === action.response.id)
       updatedState[postIndex] = {
         ...updatedState[postIndex],
         voteScore: action.response.voteScore
       }
       break;
     case EDIT_POST:
-      console.log(action.response)
+      postIndex = updatedState.findIndex(post => post.id === action.response.id)
+      updatedState[postIndex] = {
+        ...updatedState[postIndex],
+        ...action.response
+      }
+      break;
     default:
       console.warn(`Unknown action ${action.type}`);
   }
