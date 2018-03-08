@@ -1,4 +1,4 @@
-import { FETCH_POSTS, UPDATE_POST_SCORE, EDIT_POST } from "../actions/post";
+import { FETCH_POSTS, UPDATE_POST_SCORE, EDIT_POST,DELETE_POST } from "../actions/post";
 
 export function posts(state = [], action) {
   let updatedState = state.slice();
@@ -20,6 +20,9 @@ export function posts(state = [], action) {
         ...action.response
       }
       break;
+    case DELETE_POST:
+      postIndex = updatedState.findIndex(post => post.id === action.response.id)
+      updatedState.splice(postIndex,1)
     default:
       console.warn(`Unknown action ${action.type}`);
   }
