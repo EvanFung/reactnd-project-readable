@@ -21,38 +21,11 @@ export function fetchPostsFailure(error) {
 }
 
 export function fetchPosts() {
-  return createAsyncAction(FETCH_POSTS,PostsAPI.getAll())
+  return createAsyncAction(FETCH_POSTS, PostsAPI.getAll());
 }
 
-export function updatePostScore({
-  status = null,
-  response = null,
-  post,
-  voteType
-}) {
-  //if we fetched the data, return an action
-  if (status === "success" || status === "error") {
-    return {
-      type: UPDATE_POST_SCORE,
-      status,
-      response,
-      voteType
-    };
-  }
-
-  //else using promise to fetch the data
-  return dispatch => {
-    PostsAPI.vote(post, voteType)
-      .then(post => {
-        console.log(`${post.id} has an score of ${post.voteScore}`);
-        //if successfully get the data, dispatch an action.
-        dispatch(updatePostScore({ status: "success", response: post }));
-      })
-      .catch(error => {
-        //if an error occurred, dispatch an action.
-        dispatch(updatePostScore({ status: "error", response: error }));
-      });
-  };
+export function updatePostScore({ post, voteType }) {
+  return createAsyncAction(UPDATE_POST_SCORE, PostsAPI.vote(post, voteType));
 }
 
 export function editPost({ id, title, body }) {
