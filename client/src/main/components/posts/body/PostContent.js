@@ -20,6 +20,7 @@ class PostContent extends React.Component {
     anchorEl: null,
     dialogOpen: false,
     isEditing: false,
+    id:this.props.post.id,
     title: this.props.post.title,
     category: this.props.post.category,
     body: this.props.post.body,
@@ -64,8 +65,13 @@ class PostContent extends React.Component {
     e.stopPropagation();
     this.handleEditViewClose();
   };
+  onSubmitForm = (e) => {
+    e.preventDefault()
+    // console.log({...this.props.post, ...this.state})
+    this.props.editPost({...this.props.post, ...this.state})
+  }
   render() {
-    const { classes, post } = this.props;
+    const { classes, post,editPost } = this.props;
     const { anchorEl, isEditing } = this.state;
     const MAX_LENGTH = 250;
     const postIsTooLong = post.body.length > MAX_LENGTH;
@@ -122,6 +128,7 @@ class PostContent extends React.Component {
                 <Button
                   color="primary"
                   className={classes.postSaveCancelButton}
+                  onClick={this.onSubmitForm}
                 >
                   save
                 </Button>

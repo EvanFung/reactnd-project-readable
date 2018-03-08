@@ -6,11 +6,11 @@ import UpDownVoter from "../button/UpDownVoter";
 import CommentButton from "../button/CommentButton";
 class PostCardItem extends React.Component {
   render() {
-    const { classes, updatePostScore } = this.props;
+    const { classes, updatePostScore, editPost } = this.props;
     return (
       <div>
         <Card className={classes.root}>
-          <PostContent post={this.props.post} />
+          <PostContent post={this.props.post} editPost={editPost} />
           <div className={classes.footer}>
             <UpDownVoter
               post={this.props.post}

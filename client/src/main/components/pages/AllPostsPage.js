@@ -8,11 +8,15 @@ class AllPostsPage extends React.Component {
     this.props.actions.fetchPosts();
   }
   render() {
-    const { posts,actions } = this.props;
+    const { posts, actions } = this.props;
     return (
       <div>
         <TabContainer />
-        <PostListContainer posts={posts} updatePostScore={actions.updatePostScore} />
+        <PostListContainer
+          posts={posts}
+          updatePostScore={actions.updatePostScore}
+          editPost={actions.editPost}
+        />
       </div>
     );
   }
@@ -26,7 +30,10 @@ function mapDispatchToProps(dispatch, ownProps) {
   return {
     actions: {
       fetchPosts: () => dispatch(PostActions.fetchPosts()),
-      updatePostScore: (post, voteType) => dispatch(PostActions.updatePostScore({ post, voteType })),
+      updatePostScore: (post, voteType) =>
+        dispatch(PostActions.updatePostScore({ post, voteType })),
+      editPost: (id, title, body) =>
+        dispatch(PostActions.editPost(id, title, body))
     }
   };
 }

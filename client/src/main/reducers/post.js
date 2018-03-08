@@ -1,4 +1,4 @@
-import { FETCH_POSTS_SUCCESS, UPDATE_POST_SCORE } from "../actions/post";
+import { FETCH_POSTS_SUCCESS, UPDATE_POST_SCORE, EDIT_POST } from "../actions/post";
 
 export function posts(state = [], action) {
   let updatedState = state.slice();
@@ -13,6 +13,8 @@ export function posts(state = [], action) {
         voteScore: action.response.voteScore
       }
       break;
+    case EDIT_POST:
+      console.log(action.response)
     default:
       console.warn(`Unknown action ${action.type}`);
   }
