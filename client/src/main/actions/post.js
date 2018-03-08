@@ -19,5 +19,5 @@ export function editPost({ id, title, body }) {
 }
 
 export function deletePost({ post }) {
-  return createAsyncAction(DELETE_POST,PostsAPI.remove(post));
+  return createAsyncAction(DELETE_POST, PostsAPI.remove(post), { post });
 }

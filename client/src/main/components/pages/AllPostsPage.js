@@ -16,6 +16,7 @@ class AllPostsPage extends React.Component {
           posts={posts}
           updatePostScore={actions.updatePostScore}
           editPost={actions.editPost}
+          deletePost={actions.deletePost}
         />
       </div>
     );
@@ -32,7 +33,8 @@ function mapDispatchToProps(dispatch, ownProps) {
       fetchPosts: () => dispatch(PostActions.fetchPosts()),
       updatePostScore: (post, voteType) =>
         dispatch(PostActions.updatePostScore({ post, voteType })),
-      editPost: data => dispatch(PostActions.editPost(data))
+      editPost: data => dispatch(PostActions.editPost(data)),
+      deletePost: post => dispatch(PostActions.deletePost({ post }))
     }
   };
 }

@@ -70,6 +70,11 @@ class PostContent extends React.Component {
     this.props.editPost({ ...this.props.post, ...this.state });
     this.handleEditViewClose();
   };
+  handleDeletePost = e => {
+    e.preventDefault();
+    this.props.deletePost(this.props.post)
+    this.handleDialogClose();
+  }
   render() {
     const { classes, post, editPost } = this.props;
     const { anchorEl, isEditing } = this.state;
@@ -171,7 +176,7 @@ class PostContent extends React.Component {
             <Button onClick={this.handleDialogClose} color="primary">
               Disagree
             </Button>
-            <Button onClick={this.handleDialogClose} color="primary">
+            <Button onClick={this.handleDeletePost} color="primary">
               Agree
             </Button>
           </DialogActions>
@@ -180,4 +185,5 @@ class PostContent extends React.Component {
     );
   }
 }
+
 export default styles(PostContent);
