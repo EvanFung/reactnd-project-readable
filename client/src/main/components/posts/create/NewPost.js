@@ -55,9 +55,9 @@ class NewPost extends React.Component {
                     label="Redux"
                   />
                   <FormControlLabel
-                    value="Reactnative"
+                    value="udacity"
                     control={<Radio />}
-                    label="React Native"
+                    label="Udacity"
                   />
                 </RadioGroup>
               </FormGroup>

@@ -84,7 +84,7 @@ class PostContent extends React.Component {
       <div>
         <div className={classes.root}>
           <CardHeader
-            avatar={<Avatar aria-label="post">A</Avatar>}
+            avatar={<Avatar aria-label="post">{Utils.username(this.props.post.author)}</Avatar>}
             title={post.author}
             subheader={Utils.date(post.timestamp)}
             action={
