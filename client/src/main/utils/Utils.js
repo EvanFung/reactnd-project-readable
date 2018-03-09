@@ -40,3 +40,17 @@ export const date = timestamp => {
 export const username = (str = "") => {
   return typeof str !== "string" ? "" : str.substring(0, 2).toUpperCase();
 };
+
+export function sortByOjectProperty(objArray, property, order = "DESC") {
+  return objArray.sort((a, b) => {
+    let result = 0;
+    if (a[property] > b[property]) {
+      //a > b, sort a to an index higher than b.
+      result = order === "DESC" ? -1 : 1;
+    } else if (a[property] < b[property]) {
+      //a > b, sort a to an index lower than b.
+      result = order === "DESC" ? 1 : -1;
+    }
+    return result;
+  });
+}

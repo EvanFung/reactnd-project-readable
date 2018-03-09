@@ -112,7 +112,7 @@ class PostContent extends React.Component {
         </div>
         {!isEditing ? (
           <CardContent>
-            <Typography variant="caption">{post.title}</Typography>
+            <Typography variant="title">{post.title}</Typography>
             <Typography>
               {postIsTooLong
                 ? `${post.body.substring(0, MAX_LENGTH)}....`

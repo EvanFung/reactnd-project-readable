@@ -3,15 +3,17 @@ import {
   UPDATE_POST_SCORE,
   EDIT_POST,
   DELETE_POST,
-  CREATE_POST
+  CREATE_POST,
+  SORT_POST_LIST
 } from "../actions/post";
-
+import { sortByOjectProperty } from "../utils/Utils";
 export function posts(state = [], action) {
   let updatedState = state.slice();
   let postIndex;
   switch (action.type) {
     case FETCH_POSTS:
       updatedState = action.status === "success" ? action.response : [];
+      sortByOjectProperty(updatedState, "timestamp");
       break;
     case UPDATE_POST_SCORE:
       postIndex = updatedState.findIndex(
@@ -39,7 +41,12 @@ export function posts(state = [], action) {
       break;
     case CREATE_POST:
       console.log(`create post with id ${action.response.id}`);
-      action.status ? "success" : updatedState.push(action.response);
+      action.status === "success"
+        ? updatedState.push(action.response)
+        : console.log(`can't create a post`);
+      break;
+    case SORT_POST_LIST:
+      sortByOjectProperty(updatedState, action.criteria);
       break;
     default:
       console.warn(`Unknown action ${action.type}`);

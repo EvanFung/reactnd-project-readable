@@ -22,7 +22,6 @@ class NewPost extends React.Component {
   onCreatePost = e => {
     e.preventDefault();
     this.props.actions.createPost(this.state);
-    this.props.actions.fetchPosts();
     this.props.handlePostFormClose();
   };
 
