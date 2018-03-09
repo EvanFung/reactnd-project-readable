@@ -1,4 +1,6 @@
 import { generateRandomId } from "./Utils";
+import 'whatwg-fetch'
+
 const api = "http://localhost:5001";
 
 //Generate a unique token for storing your data on the backen server
@@ -24,10 +26,6 @@ const headers = {
 
 export const getAll = () => {
   return fetch(`${api}/posts`, { headers }).then(res => res.json());
-};
-
-export const get = postId => {
-  return fetch(`${api}/posts/${postId}`, { headers }).then(res => res.json());
 };
 
 export const vote = (post, option) => {
@@ -85,3 +83,13 @@ export const createPost = ({ title, body, author, category }) => {
 export const getCategories = () => {
   return fetch(`${api}/categories`, { headers }).then(res => res.json());
 };
+
+export const get = (postId) => {
+  return fetch(`${api}/posts/${postId}`,{headers})
+        .then(res => res.json())
+}
+
+export const getPostComments = (post) => {
+  return fetch(`${api}/posts/${post.id}/comments`,{headers})
+        .then(res => res.json())
+}

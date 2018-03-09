@@ -6,6 +6,11 @@ import UpDownVoter from '../posts/button/UpDownVoter'
 import styles from '../../styles/pages/PostDetailsPage'
 import CommentBox from '../posts/body/CommentBox'
 import Divider from 'material-ui/Divider'
+
+import {connect} from 'react-redux'
+
+import * as PostsActions from '../../actions/post'
+import * as CategoryActions from '../../actions/category'
 class PostDetailsPage extends React.Component {
 
 
@@ -32,4 +37,13 @@ class PostDetailsPage extends React.Component {
     )
   }
 }
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: {
+      
+    }
+  }
+}
+
 export default styles(PostDetailsPage)

@@ -11,7 +11,7 @@ class CommentButton extends React.Component {
     return (
       <div className={classes.root}>
         <CardActions disableActionSpacing>
-          <Link to={`/post`}>
+          <Link to={`/posts/id`}>
             <IconButton>
               <CommentIcon />
             </IconButton>

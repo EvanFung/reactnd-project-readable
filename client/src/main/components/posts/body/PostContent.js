@@ -78,7 +78,7 @@ class PostContent extends React.Component {
   render() {
     const { classes, post } = this.props;
     const { anchorEl, isEditing } = this.state;
-    const MAX_LENGTH = 250;
+    const MAX_LENGTH = 200;
     const postIsTooLong = post.body.length > MAX_LENGTH;
     return (
       <div>

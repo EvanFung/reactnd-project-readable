@@ -23,11 +23,11 @@ const defaultData = {
   },
   "56206e17606d":{
     id: "56206e17606d",
-    timestamp: 1511604182861,
+    timestamp: 1520578841894,
     title: "Lorem Ipsum",
     body: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ullamcorper morbi tincidunt ornare massa eget egestas purus viverra. Curabitur gravida arcu ac tortor dignissim convallis aenean. Dictum non consectetur a erat. Libero justo laoreet sit amet cursus sit. Ac auctor augue mauris augue neque gravida. Nibh tortor id aliquet lectus proin nibh nisl condimentum. Sit amet aliquam id diam maecenas ultricies mi. Molestie at elementum eu facilisis sed odio morbi quis commodo. Tincidunt lobortis feugiat vivamus at augue eget arcu dictum varius. Enim blandit volutpat maecenas volutpat blandit aliquam etiam.",
-    author: "merlo muspi",
-    category: "redux native",
+    author: "Evan Fung",
+    category: "udacity",
     voteScore: 0,
     deleted: false,
     commentCount: 1

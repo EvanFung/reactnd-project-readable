@@ -33,7 +33,7 @@ class App extends Component {
               <Grid item md={10} container={true} direction="column">
                 <Switch>
                   <Route exact path="/" component={AllPostsPage} />
-                  <Route exact path="/post" component={PostDetailsPage} />
+                  <Route exact path="/posts/:id" component={PostDetailsPage} />
                 </Switch>
               </Grid>
               <Grid item md={1} />
