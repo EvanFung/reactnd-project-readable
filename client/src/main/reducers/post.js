@@ -2,7 +2,8 @@ import {
   FETCH_POSTS,
   UPDATE_POST_SCORE,
   EDIT_POST,
-  DELETE_POST
+  DELETE_POST,
+  CREATE_POST
 } from "../actions/post";
 
 export function posts(state = [], action) {
@@ -35,6 +36,10 @@ export function posts(state = [], action) {
         post => post.id === action.response.id
       );
       updatedState.splice(postIndex, 1);
+      break;
+    case CREATE_POST:
+      console.log(`create post with id ${action.response.id}`);
+      action.status ? "success" : updatedState.push(action.response);
       break;
     default:
       console.warn(`Unknown action ${action.type}`);
