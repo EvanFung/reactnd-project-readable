@@ -8,7 +8,7 @@ class AllPostsPage extends React.Component {
     this.props.actions.fetchPosts();
   }
   render() {
-    const { posts, actions } = this.props;
+    const { posts, actions,activeCategory } = this.props;
     return (
       <div>
         <TabContainer />
@@ -17,6 +17,7 @@ class AllPostsPage extends React.Component {
           updatePostScore={actions.updatePostScore}
           editPost={actions.editPost}
           deletePost={actions.deletePost}
+          activeCategory={activeCategory}
         />
       </div>
     );
@@ -24,7 +25,8 @@ class AllPostsPage extends React.Component {
 }
 function mapStateToProps(state) {
   return {
-    posts: state.posts
+    posts: state.posts,
+    activeCategory: state.activeCategory
   };
 }
 function mapDispatchToProps(dispatch, ownProps) {

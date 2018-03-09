@@ -4,7 +4,7 @@ export const SET_ACTIVE_CATEGORY = "SET_ACTIVE_CATEGORY";
 export const FETCH_CATEGORIES = "FETCH_CATEGORIES";
 export function setActiveCategory(categoryId) {
   return {
-    SET_ACTIVE_CATEGORY,
+    type:SET_ACTIVE_CATEGORY,
     categoryId
   };
 }

@@ -12,7 +12,7 @@ export function activeCategory(state = null, action) {
 export function categories(state = [], action) {
   switch (action.type) {
     case FETCH_CATEGORIES:
-      return action.status === "success" ? action.response : [];
+      return action.status === "success" ? action.response.categories : [];
       break;
     default:
       return state;
