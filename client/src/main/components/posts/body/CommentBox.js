@@ -11,6 +11,7 @@ import ThumbUp from "material-ui-icons/ThumbUp";
 import ThumbDown from "material-ui-icons/ThumbDown";
 import Loader from "../../assets/LoadingProgress";
 import styles from "../../../styles/post/body/CommentBox";
+import * as PostActions from "../../../actions/post";
 class CommentBox extends React.Component {
   state = {
     isLoading: false
@@ -54,7 +55,8 @@ function mapStateToProps(state) {
 }
 function mapDispatchToProps(dispatch) {
   return {
-    actions: {}
+    actions: {
+    }
   };
 }
 export default connect(mapStateToProps, mapDispatchToProps)(styles(CommentBox));
