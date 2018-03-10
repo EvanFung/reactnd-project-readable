@@ -68,17 +68,29 @@ class PostContent extends React.Component {
   };
   onSubmitForm = e => {
     e.preventDefault();
-    this.props.editPost({ ...this.props.post, ...this.state });
+
+    if (this.props.commentBox) {
+      this.props.editComment({ ...this.props.post, ...this.state });
+    } else {
+      this.props.editPost({ ...this.props.post, ...this.state });
+    }
     this.handleEditViewClose();
   };
   handleDeletePost = e => {
     e.preventDefault();
-    this.props.deletePost(this.props.post).then(() => {
-      if (this.props.commentMode) {
-        this.props.setActiveCategory(null);
-        this.props.history.push(`/`);
-      }
-    });
+    if (this.props.commentMode) {
+      this.props.deletePost(this.props.post).then(() => {
+        if (this.props.commentMode) {
+          this.props.setActiveCategory(null);
+          this.props.history.push(`/`);
+        }
+      });
+    }
+
+    if (this.props.commentBox) {
+      this.props.deleteComment(this.props.post);
+    }
+
     this.handleDialogClose();
   };
   render() {
@@ -99,7 +111,7 @@ class PostContent extends React.Component {
             subheader={Utils.date(post.timestamp)}
             action={
               <div>
-                {this.props.commentMode ? null : (
+                {this.props.commentBox ? null : (
                   <Button className={classes.postLabel}>{post.category}</Button>
                 )}
 
@@ -151,7 +163,7 @@ class PostContent extends React.Component {
                   save
                 </Button>
               </div>
-              {this.props.commentMode ? null : (
+              {this.props.commentBox ? null : (
                 <Input
                   placeholder="Post title"
                   fullWidth={true}

@@ -32,22 +32,26 @@ class CommentBox extends React.Component {
             <PostContent
               key={comment.id}
               post={comment}
-              commentMode={true}
+              commentBox={true}
               editComment={actions.editComment}
+              deleteComment={actions.deleteComment}
             />
             <CardActions disableActionSpacing className={classes.root}>
               <IconButton
                 aria-label="Add to favorites"
                 onClick={() => {
-                  actions.updateCommentScore(comment,'upVote');
+                  actions.updateCommentScore(comment, "upVote");
                 }}
               >
                 <ThumbUp />
               </IconButton>
               <Typography>{comment.voteScore}</Typography>
-              <IconButton aria-label="Add to favorites" onClick={() => {
-                actions.updateCommentScore(comment,'downVote')
-              }}>
+              <IconButton
+                aria-label="Add to favorites"
+                onClick={() => {
+                  actions.updateCommentScore(comment, "downVote");
+                }}
+              >
                 <ThumbDown />
               </IconButton>
             </CardActions>
@@ -69,7 +73,9 @@ function mapDispatchToProps(dispatch) {
     actions: {
       updateCommentScore: (comment, voteType) =>
         dispatch(CommentActions.updateCommentScore({ comment, voteType })),
-      editComment: comment => dispatch(CommentActions.editComment({ comment }))
+      editComment: comment => dispatch(CommentActions.editComment({ comment })),
+      deleteComment: comment =>
+        dispatch(CommentActions.deleteComment({ comment }))
     }
   };
 }
