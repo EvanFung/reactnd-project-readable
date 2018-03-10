@@ -11,9 +11,7 @@ const store = configureStore();
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <Switch>
-        <Route path="/" component={App} />
-      </Switch>
+      <App />
     </BrowserRouter>
   </Provider>,
   document.getElementById("root")

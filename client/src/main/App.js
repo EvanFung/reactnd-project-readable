@@ -33,7 +33,16 @@ class App extends Component {
               <Grid item md={10} container={true} direction="column">
                 <Switch>
                   <Route exact path="/" component={AllPostsPage} />
-                  <Route exact path="/posts/:id" component={PostDetailsPage} />
+                  <Route
+                    exact
+                    path="/:category/:postId"
+                    render={({ match, location }) => (
+                      <PostDetailsPage
+                        category={match.params.category}
+                        postId={match.params.postId}
+                      />
+                    )}
+                  />
                 </Switch>
               </Grid>
               <Grid item md={1} />

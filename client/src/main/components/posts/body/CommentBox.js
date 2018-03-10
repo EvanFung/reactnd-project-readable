@@ -6,7 +6,7 @@ class CommentBox extends React.Component {
   render() {
     return (
       <div>
-        <PostContent />
+        <PostContent post={this.props.post} />
         <UpDownVoter />
       </div>
     )

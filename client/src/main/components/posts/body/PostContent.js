@@ -73,6 +73,11 @@ class PostContent extends React.Component {
   handleDeletePost = e => {
     e.preventDefault();
     this.props.deletePost(this.props.post)
+    .then(() => {
+      if(this.props.commentMode) {
+        this.props.history.push(`/`);
+      }
+    })
     this.handleDialogClose();
   }
   render() {

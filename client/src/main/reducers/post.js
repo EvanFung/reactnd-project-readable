@@ -4,7 +4,8 @@ import {
   EDIT_POST,
   DELETE_POST,
   CREATE_POST,
-  SORT_POST_LIST
+  SORT_POST_LIST,
+  FETCH_POST_DATA
 } from "../actions/post";
 import { sortByOjectProperty } from "../utils/Utils";
 export function posts(state = [], action) {
@@ -48,8 +49,29 @@ export function posts(state = [], action) {
     case SORT_POST_LIST:
       sortByOjectProperty(updatedState, action.criteria);
       break;
+    case FETCH_POST_DATA:
+      updatedState = [];
+      if (action.status === "success") {
+        updatedState.push(action.response);
+      }
+      break;
     default:
       console.warn(`Unknown action ${action.type}`);
   }
   return updatedState;
+}
+
+export function activePost(state = null, action) {
+  switch (action.type) {
+    case CREATE_POST:
+    case UPDATE_POST_SCORE:
+    case FETCH_POST_DATA:
+    case EDIT_POST:
+    case DELETE_POST:
+      return action.status === "success" ? action.response : null;
+    default:
+      console.debug(`<ActivePostReducer> Unknown action ${action.type}`);
+  }
+
+  return state;
 }
