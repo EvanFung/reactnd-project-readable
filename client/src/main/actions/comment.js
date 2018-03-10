@@ -7,6 +7,7 @@ export const UPDATE_COMMENT_SCORE = "UPDATE_COMMENT_SCORE";
 export const DELETE_COMMENT = "DELETE_COMMENT";
 export const POST_NEW_COMMENT = "POST_NEW_COMMENT";
 export const EDIT_COMMENT = "EDIT_COMMENT";
+
 export function fetchCommentsForPost({ post }) {
   return createAsyncAction(
     FETCH_COMMENTS_FOR_POST,
