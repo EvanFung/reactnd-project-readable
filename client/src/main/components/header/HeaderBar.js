@@ -9,7 +9,9 @@ import Drawer from "material-ui/Drawer";
 import ListSubheader from "material-ui/List/ListSubheader";
 import List, { ListItem, ListItemText } from "material-ui/List";
 import { connect } from "react-redux";
+import { withRouter } from 'react-router-dom';
 import * as CategoryActions from "../../actions/category";
+
 class HeaderBar extends React.Component {
   state = {
     drawerOpen: false
@@ -58,6 +60,7 @@ class HeaderBar extends React.Component {
                   primary="ALL"
                   onClick={() => {
                     actions.setActiveCategory(null);
+                    
                     this.handleDrawerClose();
                   }}
                 />
@@ -98,4 +101,4 @@ function mapDispatchToProps(dispatch) {
     }
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(styles(HeaderBar));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(styles(HeaderBar)));

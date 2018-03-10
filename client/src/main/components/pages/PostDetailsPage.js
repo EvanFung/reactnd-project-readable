@@ -60,11 +60,17 @@ class PostDetailsPage extends React.Component {
           </div>
         </Card>
 
-        {/* <Card className={classes.commentbox}>
-          <CommentBox post={post} />
-          <Divider light={true} />
-          <CommentBox post={post} />
-        </Card> */}
+        <Card className={classes.commentbox}>
+          <CommentBox
+            post={post}
+            editPost={actions.editPost}
+            deletePost={actions.deletePost}
+            commentMode="commentMode"
+            fetchPosts={actions.fetchPosts}
+            setActiveCategory={actions.setActiveCategory}
+            updatePostScore={actions.updatePostScore}
+          />
+        </Card>
       </div>
     );
   }
