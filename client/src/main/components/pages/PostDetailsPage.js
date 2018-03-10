@@ -45,7 +45,7 @@ class PostDetailsPage extends React.Component {
             post={post}
             editPost={actions.editPost}
             deletePost={actions.deletePost}
-            commentMode="commentMode"
+            commentMode={true}
             fetchPosts={actions.fetchPosts}
             setActiveCategory={actions.setActiveCategory}
           />
@@ -61,15 +61,7 @@ class PostDetailsPage extends React.Component {
         </Card>
 
         <Card className={classes.commentbox}>
-          <CommentBox
-            post={post}
-            editPost={actions.editPost}
-            deletePost={actions.deletePost}
-            commentMode="commentMode"
-            fetchPosts={actions.fetchPosts}
-            setActiveCategory={actions.setActiveCategory}
-            updatePostScore={actions.updatePostScore}
-          />
+          <CommentBox />
         </Card>
       </div>
     );

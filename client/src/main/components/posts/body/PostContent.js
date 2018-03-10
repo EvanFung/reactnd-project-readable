@@ -15,7 +15,7 @@ import Dialog, {
   DialogTitle
 } from "material-ui/Dialog";
 import * as Utils from "../../../utils/Utils";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 class PostContent extends React.Component {
   state = {
     anchorEl: null,
@@ -73,31 +73,36 @@ class PostContent extends React.Component {
   };
   handleDeletePost = e => {
     e.preventDefault();
-    this.props.deletePost(this.props.post)
-    .then(() => {
-      if(this.props.commentMode) {
+    this.props.deletePost(this.props.post).then(() => {
+      if (this.props.commentMode) {
         this.props.setActiveCategory(null);
         this.props.history.push(`/`);
       }
-    })
+    });
     this.handleDialogClose();
-  }
+  };
   render() {
     const { classes, post } = this.props;
     const { anchorEl, isEditing } = this.state;
     const MAX_LENGTH = 200;
     const postIsTooLong = post.body.length > MAX_LENGTH;
-    console.log(this.props.commentMode)
     return (
       <div>
         <div className={classes.root}>
           <CardHeader
-            avatar={<Avatar aria-label="post">{Utils.username(this.props.post.author)}</Avatar>}
+            avatar={
+              <Avatar aria-label="post">
+                {Utils.username(this.props.post.author)}
+              </Avatar>
+            }
             title={post.author}
             subheader={Utils.date(post.timestamp)}
             action={
               <div>
-                <Button className={classes.postLabel}>{post.category}</Button>
+                {this.props.commentMode ? null : (
+                  <Button className={classes.postLabel}>{post.category}</Button>
+                )}
+
                 <IconButton
                   onClick={this.handleClickMoreIcon}
                   aria-owns={anchorEl ? "post-menu" : null}
@@ -146,14 +151,16 @@ class PostContent extends React.Component {
                   save
                 </Button>
               </div>
-              <Input
-                placeholder="Post title"
-                fullWidth={true}
-                defaultValue={this.state.title}
-                margin="dense"
-                onChange={this.onTitleChange}
-                disableUnderline={true}
-              />
+              {this.props.commentMode ? null : (
+                <Input
+                  placeholder="Post title"
+                  fullWidth={true}
+                  defaultValue={this.state.title}
+                  margin="dense"
+                  onChange={this.onTitleChange}
+                  disableUnderline={true}
+                />
+              )}
               <Input
                 placeholder="Post body"
                 fullWidth={true}

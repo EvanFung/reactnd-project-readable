@@ -11,3 +11,7 @@ export function fetchCommentsForPost({ post }) {
     { post }
   );
 }
+
+export function postNewComment() {
+  
+}
