@@ -15,6 +15,7 @@ import Dialog, {
   DialogTitle
 } from "material-ui/Dialog";
 import * as Utils from "../../../utils/Utils";
+import { withRouter } from 'react-router-dom';
 class PostContent extends React.Component {
   state = {
     anchorEl: null,
@@ -75,6 +76,7 @@ class PostContent extends React.Component {
     this.props.deletePost(this.props.post)
     .then(() => {
       if(this.props.commentMode) {
+        this.props.setActiveCategory(null);
         this.props.history.push(`/`);
       }
     })
@@ -85,6 +87,7 @@ class PostContent extends React.Component {
     const { anchorEl, isEditing } = this.state;
     const MAX_LENGTH = 200;
     const postIsTooLong = post.body.length > MAX_LENGTH;
+    console.log(this.props.commentMode)
     return (
       <div>
         <div className={classes.root}>
@@ -191,4 +194,4 @@ class PostContent extends React.Component {
   }
 }
 
-export default styles(PostContent);
+export default withRouter(styles(PostContent));

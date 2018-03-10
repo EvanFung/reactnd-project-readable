@@ -41,9 +41,19 @@ class PostDetailsPage extends React.Component {
     return (
       <div className={classes.root}>
         <Card>
-          <PostContent post={post} editPost={actions.editPost} deletePost={actions.deletePost} commentMode="commentMode" />
+          <PostContent
+            post={post}
+            editPost={actions.editPost}
+            deletePost={actions.deletePost}
+            commentMode="commentMode"
+            fetchPosts={actions.fetchPosts}
+            setActiveCategory={actions.setActiveCategory}
+          />
           <div className={classes.footer}>
-            <UpDownVoter post={post} updatePostScore={actions.updatePostScore} />
+            <UpDownVoter
+              post={post}
+              updatePostScore={actions.updatePostScore}
+            />
           </div>
           <div>
             <NewComment />
@@ -76,6 +86,7 @@ function mapDispatchToProps(dispatch) {
         dispatch(PostActions.updatePostScore({ post, voteType })),
       deletePost: post => dispatch(PostActions.deletePost({ post })),
       editPost: data => dispatch(PostActions.editPost(data)),
+      fetchPosts: () => dispatch(PostActions.fetchPosts())
     }
   };
 }

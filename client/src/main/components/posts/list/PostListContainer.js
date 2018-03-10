@@ -3,7 +3,7 @@ import PostCardItem from "./PostCardItem";
 class PostListContainer extends React.Component {
   render() {
     const { posts, updatePostScore, editPost,deletePost,activeCategory } = this.props;
-    const postsToDisplay = posts.filter(post => !post.deleted && (!activeCategory || post.category === activeCategory) )
+    const postsToDisplay = posts.filter(post => !activeCategory || post.category === activeCategory )
     return (
       <div>
         {postsToDisplay.map(post => (

@@ -36,7 +36,7 @@ export function posts(state = [], action) {
       break;
     case DELETE_POST:
       postIndex = updatedState.findIndex(
-        post => post.id === action.response.id
+        item => item.id === action.response.id
       );
       updatedState.splice(postIndex, 1);
       break;
