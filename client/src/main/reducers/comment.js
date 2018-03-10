@@ -37,7 +37,7 @@ export function comments(state = [], action) {
       );
       break;
     case EDIT_COMMENT:
-      let commentIndex = updatedState.findIndex(
+      commentIndex = updatedState.findIndex(
         item => item.id === action.response.id
       );
       updatedState[commentIndex] = {

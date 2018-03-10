@@ -11,14 +11,13 @@ import ThumbUp from "material-ui-icons/ThumbUp";
 import ThumbDown from "material-ui-icons/ThumbDown";
 import Loader from "../../assets/LoadingProgress";
 import styles from "../../../styles/post/body/CommentBox";
-import * as PostActions from "../../../actions/post";
 class CommentBox extends React.Component {
   state = {
     isLoading: false
   };
   componentWillMount() {}
   render() {
-    const { classes } = this.props;
+    const { classes, actions } = this.props;
     if (!this.props.comments) {
       return <Loader />;
     }
@@ -30,13 +29,25 @@ class CommentBox extends React.Component {
       <div>
         {this.props.comments.map(comment => (
           <div key={comment.id}>
-            <PostContent key={comment.id} post={comment} commentMode={true} />
+            <PostContent
+              key={comment.id}
+              post={comment}
+              commentMode={true}
+              editComment={actions.editComment}
+            />
             <CardActions disableActionSpacing className={classes.root}>
-              <IconButton aria-label="Add to favorites" onClick={() => {}}>
+              <IconButton
+                aria-label="Add to favorites"
+                onClick={() => {
+                  actions.updateCommentScore(comment,'upVote');
+                }}
+              >
                 <ThumbUp />
               </IconButton>
               <Typography>{comment.voteScore}</Typography>
-              <IconButton aria-label="Add to favorites" onClick={() => {}}>
+              <IconButton aria-label="Add to favorites" onClick={() => {
+                actions.updateCommentScore(comment,'downVote')
+              }}>
                 <ThumbDown />
               </IconButton>
             </CardActions>
@@ -56,6 +67,9 @@ function mapStateToProps(state) {
 function mapDispatchToProps(dispatch) {
   return {
     actions: {
+      updateCommentScore: (comment, voteType) =>
+        dispatch(CommentActions.updateCommentScore({ comment, voteType })),
+      editComment: comment => dispatch(CommentActions.editComment({ comment }))
     }
   };
 }
