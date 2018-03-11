@@ -56,7 +56,7 @@ class PostDetailsPage extends React.Component {
             />
           </div>
           <div>
-            <NewComment />
+            <NewComment postNewComment={actions.postNewComment} post={post} />
           </div>
         </Card>
 
@@ -84,7 +84,9 @@ function mapDispatchToProps(dispatch) {
         dispatch(PostActions.updatePostScore({ post, voteType })),
       deletePost: post => dispatch(PostActions.deletePost({ post })),
       editPost: data => dispatch(PostActions.editPost(data)),
-      fetchPosts: () => dispatch(PostActions.fetchPosts())
+      fetchPosts: () => dispatch(PostActions.fetchPosts()),
+      postNewComment: (post, comment) =>
+        dispatch(CommentActions.postNewComment({ post, comment }))
     }
   };
 }

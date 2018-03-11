@@ -28,6 +28,7 @@ class PostContent extends React.Component {
     fullAuthorName: this.props.post.author,
     shortAuthorName: this.props.post.author
   };
+
   handleClickMoreIcon = event => {
     this.setState({ anchorEl: event.currentTarget });
   };
