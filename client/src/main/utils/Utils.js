@@ -1,4 +1,5 @@
 import uuidv4 from "uuid/v4";
+import Identity from "fake-identity";
 /**
  * Generate random uuid without separator characters.
  * @return {[string]} Generated id with a length of 22 characters.
@@ -54,3 +55,7 @@ export function sortByOjectProperty(objArray, property, order = "DESC") {
     return result;
   });
 }
+
+export const fakeName = () => {
+  return Identity.generate().firstName + " " + Identity.generate().lastName;
+};

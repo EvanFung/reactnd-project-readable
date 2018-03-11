@@ -6,11 +6,12 @@ import styles from "../../../styles/post/create/NewComment";
 import * as Utils from "../../../utils/Utils";
 class NewComment extends React.Component {
   state = {
-    author: Utils.generateRandomId(),
+    author: Utils.fakeName(),
     body: ""
   };
 
-  onSubmitForm = (e) => {
+
+  onSubmitForm = e => {
     const body = this.state.body;
     if (e.charCode === 13) {
       if (this.checkIsEmpty()) {
@@ -23,7 +24,7 @@ class NewComment extends React.Component {
 
   resetForm = () => {
     this.setState({
-      author: Utils.generateRandomId(),
+      author: Utils.fakeName(),
       body: ""
     });
   };

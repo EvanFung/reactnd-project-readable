@@ -1,12 +1,7 @@
 import React from "react";
 import PostCardItem from "./PostCardItem";
 class PostListContainer extends React.Component {
-  state = {
-    posts:this.props.posts
-  }
-  componentWillReceiveProps(nextProps) {
-    this.setState({ posts: nextProps.posts})
-  }
+
   render() {
     const {
       posts,
@@ -15,7 +10,6 @@ class PostListContainer extends React.Component {
       deletePost,
       activeCategory
     } = this.props;
-    console.log(posts)
     const postsToDisplay = posts.filter(
       post => !activeCategory || post.category === activeCategory
     );

@@ -9,7 +9,7 @@ class PostCardItem extends React.Component {
     this.props.deletePost(post);
   }
   render() {
-    const { classes, updatePostScore, editPost,deletePost } = this.props;
+    const { classes, updatePostScore, editPost } = this.props;
     return (
       <div>
         <Card className={classes.root}>

@@ -24,7 +24,7 @@ const defaultData = {
     parentId: "56206e17606d",
     timestamp: 1520578841894,
     body: "(/≧▽≦)/, It was so long...didn't read ah..?",
-    author: "complainer",
+    author: "Complainer",
     voteScore: 0,
     deleted: false,
     parentDeleted: false
