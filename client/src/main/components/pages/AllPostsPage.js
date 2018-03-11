@@ -3,23 +3,30 @@ import { connect } from "react-redux";
 import PostListContainer from "../posts/list/PostListContainer";
 import TabContainer from "../menu/TabContainer";
 import * as PostActions from "../../actions/post";
+import NotFoundPage from "./NotFoundPage";
 class AllPostsPage extends React.Component {
   componentWillMount() {
     this.props.actions.fetchPosts();
   }
 
   render() {
-    const { posts, actions,activeCategory } = this.props;
+    const { posts, actions, activeCategory } = this.props;
     return (
       <div>
-        <TabContainer />
-        <PostListContainer
-          posts={posts}
-          updatePostScore={actions.updatePostScore}
-          editPost={actions.editPost}
-          deletePost={actions.deletePost}
-          activeCategory={activeCategory}
-        />
+        {posts ? (
+          <div>
+            <TabContainer />
+            <PostListContainer
+              posts={posts}
+              updatePostScore={actions.updatePostScore}
+              editPost={actions.editPost}
+              deletePost={actions.deletePost}
+              activeCategory={activeCategory}
+            />
+          </div>
+        ) : (
+          <NotFoundPage />
+        )}
       </div>
     );
   }
@@ -37,7 +44,7 @@ function mapDispatchToProps(dispatch, ownProps) {
       updatePostScore: (post, voteType) =>
         dispatch(PostActions.updatePostScore({ post, voteType })),
       editPost: data => dispatch(PostActions.editPost(data)),
-      deletePost: (post) => dispatch(PostActions.deletePost({ post })),
+      deletePost: post => dispatch(PostActions.deletePost({ post }))
     }
   };
 }

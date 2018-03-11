@@ -9,7 +9,7 @@ import AddPostTooltips from "./components/menu/Tooltips";
 import NewPost from "./components/posts/create/NewPost";
 import AllPostsPage from "./components/pages/AllPostsPage";
 import PostDetailsPage from "./components/pages/PostDetailsPage";
-
+import NotFoundPage from './components/pages/NotFoundPage'
 class App extends Component {
   state = {
     formDialogOpen: false
@@ -50,6 +50,7 @@ class App extends Component {
                       />
                     )}
                   />
+                  <Route path="*" component={NotFoundPage}/>
                 </Switch>
               </Grid>
               <Grid item md={1} />

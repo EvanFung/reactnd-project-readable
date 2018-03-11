@@ -7,11 +7,16 @@ import styles from "../../styles/pages/PostDetailsPage";
 import CommentBox from "../posts/body/CommentBox";
 import Divider from "material-ui/Divider";
 import Loader from "../assets/LoadingProgress";
+import { CardActions } from 'material-ui/Card'
+import IconButton from 'material-ui/IconButton'
+import CommentIcon from 'material-ui-icons/Comment'
+import Typography from 'material-ui/Typography'
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import * as PostActions from "../../actions/post";
 import * as CategoryActions from "../../actions/category";
 import * as CommentActions from "../../actions/comment";
+import NotFoundPage from "./NotFoundPage";
 class PostDetailsPage extends React.Component {
   state = {
     isLoading: false
@@ -31,12 +36,12 @@ class PostDetailsPage extends React.Component {
     this.props.actions.setActiveCategory(this.props.category);
   }
 
-  requestDeletePost = (post) => {
-    this.props.actions.deletePost(post).then(()=> {
+  requestDeletePost = post => {
+    this.props.actions.deletePost(post).then(() => {
       this.props.actions.setActiveCategory(null);
-      this.props.history.push(`/`)
-    })
-  }
+      this.props.history.push(`/`);
+    });
+  };
   render() {
     const { classes, post, actions } = this.props;
     if (!post) {
@@ -46,30 +51,51 @@ class PostDetailsPage extends React.Component {
       return <Loader />;
     }
     return (
-      <div className={classes.root}>
-        <Card>
-          <PostContent
-            post={post}
-            editPost={actions.editPost}
-            deletePost={this.requestDeletePost}
-            postDetails={true}
-            fetchPosts={actions.fetchPosts}
-            setActiveCategory={actions.setActiveCategory}
-          />
-          <div className={classes.footer}>
-            <UpDownVoter
-              post={post}
-              updatePostScore={actions.updatePostScore}
-            />
-          </div>
+      <div>
+        {post ? (
           <div>
-            <NewComment postNewComment={actions.postNewComment} post={post} />
-          </div>
-        </Card>
+            {post.id ? (
+              <div>
+                <div className={classes.root}>
+                  <Card>
+                    <PostContent
+                      post={post}
+                      editPost={actions.editPost}
+                      deletePost={this.requestDeletePost}
+                      postDetails={true}
+                      fetchPosts={actions.fetchPosts}
+                      setActiveCategory={actions.setActiveCategory}
+                    />
+                    <div className={classes.footer}>
+                      <UpDownVoter
+                        post={post}
+                        updatePostScore={actions.updatePostScore}
+                      />
+                      <CardActions disableActionSpacing className={classes.commentIcon}>
+                        <IconButton>
+                          <CommentIcon />
+                        </IconButton>
+                        <Typography>{post.commentCount}</Typography>
+                      </CardActions>
+                    </div>
+                    <div>
+                      <NewComment
+                        postNewComment={actions.postNewComment}
+                        post={post}
+                      />
+                    </div>
+                  </Card>
 
-        <Card className={classes.commentbox}>
-          <CommentBox />
-        </Card>
+                  <Card className={classes.commentbox}>
+                    <CommentBox />
+                  </Card>
+                </div>
+              </div>
+            ) : (
+              <NotFoundPage />
+            )}
+          </div>
+        ) : null}
       </div>
     );
   }

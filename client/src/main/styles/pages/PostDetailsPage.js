@@ -15,6 +15,9 @@ const option = theme => ({
   },
   commentbox: {
     marginTop: theme.spacing.unit * 4
+  },
+  commentIcon: {
+    paddingRight:theme.spacing.unit * 2
   }
 })
 

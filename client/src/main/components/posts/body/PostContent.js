@@ -16,6 +16,7 @@ import Dialog, {
 } from "material-ui/Dialog";
 import * as Utils from "../../../utils/Utils";
 import { withRouter } from "react-router-dom";
+import NotFoundPage from "../../pages/NotFoundPage";
 class PostContent extends React.Component {
   state = {
     anchorEl: null,
@@ -86,117 +87,133 @@ class PostContent extends React.Component {
     const { classes, post } = this.props;
     const { anchorEl, isEditing } = this.state;
     const MAX_LENGTH = 200;
-    const postIsTooLong = post.body.length > MAX_LENGTH;
+
     return (
       <div>
-        <div className={classes.root}>
-          <CardHeader
-            avatar={
-              <Avatar aria-label="post">
-                {Utils.username(this.props.post.author)}
-              </Avatar>
-            }
-            title={post.author}
-            subheader={Utils.date(post.timestamp)}
-            action={
+        {post ? (
+          <div>
+            {post.id ? (
               <div>
-                {this.props.commentBox ? null : (
-                  <Button className={classes.postLabel}>{post.category}</Button>
+                <div className={classes.root}>
+                  <CardHeader
+                    avatar={
+                      <Avatar aria-label="post">
+                        {Utils.username(this.props.post.author)}
+                      </Avatar>
+                    }
+                    title={post.author}
+                    subheader={Utils.date(post.timestamp)}
+                    action={
+                      <div>
+                        {this.props.commentBox ? null : (
+                          <Button className={classes.postLabel}>
+                            {post.category}
+                          </Button>
+                        )}
+
+                        <IconButton
+                          onClick={this.handleClickMoreIcon}
+                          aria-owns={anchorEl ? "post-menu" : null}
+                          aria-haspopup="true"
+                        >
+                          <MoreVertIcon />
+                        </IconButton>
+                        <Menu
+                          id="post-menu"
+                          anchorEl={anchorEl}
+                          open={Boolean(anchorEl)}
+                          onClose={this.handleCloseMoreIcon}
+                        >
+                          <MenuItem onClick={this.handleEditViewOpen}>
+                            Edit
+                          </MenuItem>
+                          <MenuItem onClick={this.handleDialogOpen}>
+                            Delete
+                          </MenuItem>
+                        </Menu>
+                      </div>
+                    }
+                  />
+                </div>
+                {!isEditing ? (
+                  <CardContent>
+                    <Typography variant="title">{post.title}</Typography>
+                    <Typography>
+                      {post.body.length > MAX_LENGTH
+                        ? `${post.body.substring(0, MAX_LENGTH)}....`
+                        : `${post.body}`}
+                    </Typography>
+                  </CardContent>
+                ) : (
+                  <CardContent>
+                    <form noValidate autoComplete="off">
+                      <div className={classes.postSaveCancelDiv}>
+                        <Button
+                          color="primary"
+                          className={classes.postSaveCancelButton}
+                          onClick={this.closePostEditVie}
+                        >
+                          cancel
+                        </Button>
+                        <Button
+                          color="primary"
+                          className={classes.postSaveCancelButton}
+                          onClick={this.onSubmitForm}
+                        >
+                          save
+                        </Button>
+                      </div>
+                      {this.props.commentBox ? null : (
+                        <Input
+                          placeholder="Post title"
+                          fullWidth={true}
+                          defaultValue={this.state.title}
+                          margin="dense"
+                          onChange={this.onTitleChange}
+                          disableUnderline={true}
+                        />
+                      )}
+                      <Input
+                        placeholder="Post body"
+                        fullWidth={true}
+                        defaultValue={this.state.body}
+                        margin="dense"
+                        onChange={this.onBodyChange}
+                        disableUnderline={true}
+                      />
+                    </form>
+                  </CardContent>
                 )}
 
-                <IconButton
-                  onClick={this.handleClickMoreIcon}
-                  aria-owns={anchorEl ? "post-menu" : null}
-                  aria-haspopup="true"
+                <Dialog
+                  open={this.state.dialogOpen}
+                  onClose={this.handleDialogClose}
+                  aria-labelledby="alert-dialog-title"
+                  aria-describedby="alter-dialog-description"
                 >
-                  <MoreVertIcon />
-                </IconButton>
-                <Menu
-                  id="post-menu"
-                  anchorEl={anchorEl}
-                  open={Boolean(anchorEl)}
-                  onClose={this.handleCloseMoreIcon}
-                >
-                  <MenuItem onClick={this.handleEditViewOpen}>Edit</MenuItem>
-                  <MenuItem onClick={this.handleDialogOpen}>Delete</MenuItem>
-                </Menu>
+                  <DialogTitle id="alter-dialog-title">
+                    {"Are you sure to delete this post?"}
+                  </DialogTitle>
+                  <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+                      A deleted post cannot be recovered.
+                    </DialogContentText>
+                  </DialogContent>
+                  <DialogActions>
+                    <Button onClick={this.handleDialogClose} color="primary">
+                      Disagree
+                    </Button>
+                    <Button onClick={this.handleDeletePost} color="primary">
+                      Agree
+                    </Button>
+                  </DialogActions>
+                </Dialog>
               </div>
-            }
-          />
-        </div>
-        {!isEditing ? (
-          <CardContent>
-            <Typography variant="title">{post.title}</Typography>
-            <Typography>
-              {postIsTooLong
-                ? `${post.body.substring(0, MAX_LENGTH)}....`
-                : `${post.body}`}
-            </Typography>
-          </CardContent>
-        ) : (
-          <CardContent>
-            <form noValidate autoComplete="off">
-              <div className={classes.postSaveCancelDiv}>
-                <Button
-                  color="primary"
-                  className={classes.postSaveCancelButton}
-                  onClick={this.closePostEditVie}
-                >
-                  cancel
-                </Button>
-                <Button
-                  color="primary"
-                  className={classes.postSaveCancelButton}
-                  onClick={this.onSubmitForm}
-                >
-                  save
-                </Button>
-              </div>
-              {this.props.commentBox ? null : (
-                <Input
-                  placeholder="Post title"
-                  fullWidth={true}
-                  defaultValue={this.state.title}
-                  margin="dense"
-                  onChange={this.onTitleChange}
-                  disableUnderline={true}
-                />
-              )}
-              <Input
-                placeholder="Post body"
-                fullWidth={true}
-                defaultValue={this.state.body}
-                margin="dense"
-                onChange={this.onBodyChange}
-                disableUnderline={true}
-              />
-            </form>
-          </CardContent>
-        )}
-
-        <Dialog
-          open={this.state.dialogOpen}
-          onClose={this.handleDialogClose}
-          aria-labelledby="alert-dialog-title"
-          aria-describedby="alter-dialog-description"
-        >
-          <DialogTitle id="alter-dialog-title">
-            {"Are you sure to delete this post?"}
-          </DialogTitle>
-          <DialogContent>
-            <DialogContentText id="alert-dialog-description">
-              A deleted post cannot be recovered.
-            </DialogContentText>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={this.handleDialogClose} color="primary">
-              Disagree
-            </Button>
-            <Button onClick={this.handleDeletePost} color="primary">
-              Agree
-            </Button>
-          </DialogActions>
-        </Dialog>
+            ) : (
+              <NotFoundPage />
+            )}
+          </div>
+        ) : null}
       </div>
     );
   }
