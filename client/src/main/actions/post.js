@@ -8,6 +8,7 @@ export const UPDATE_POST_SCORE = "UPDATE_POST_SCORE";
 export const DELETE_POST = "DELETE_POST";
 export const CREATE_POST = "CREATE_POST";
 export const SORT_POST_LIST = "SORT_POST_LIST";
+export const FETCH_POSTS_BY_CATEGORY = "FETCH_POSTS_BY_CATEGORY";
 export function fetchPosts() {
   return createAsyncAction(FETCH_POSTS, PostsAPI.getAll());
 }
@@ -33,6 +34,13 @@ export function createPost({ title, body, author, category }) {
 
 export function fetchPostData({ postId }) {
   return createAsyncAction(FETCH_POST_DATA, PostsAPI.get(postId), { postId });
+}
+
+export function fetchPostByCategory({ category }) {
+  return createAsyncAction(
+    FETCH_POSTS_BY_CATEGORY,
+    PostsAPI.getPostByCategory(category)
+  );
 }
 
 export function sortPostsBy({ criteria }) {

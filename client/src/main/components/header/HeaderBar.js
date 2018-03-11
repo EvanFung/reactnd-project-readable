@@ -9,7 +9,7 @@ import Drawer from "material-ui/Drawer";
 import ListSubheader from "material-ui/List/ListSubheader";
 import List, { ListItem, ListItemText } from "material-ui/List";
 import { connect } from "react-redux";
-import { withRouter } from 'react-router-dom';
+import { withRouter } from "react-router-dom";
 import * as CategoryActions from "../../actions/category";
 
 class HeaderBar extends React.Component {
@@ -55,25 +55,29 @@ class HeaderBar extends React.Component {
                 <ListSubheader component="nav">Category</ListSubheader>
               }
             >
-              <ListItem button divider>
-                <ListItemText
-                  primary="ALL"
-                  onClick={() => {
-                    actions.setActiveCategory(null);
-                    
-                    this.handleDrawerClose();
-                  }}
-                />
+              <ListItem
+                button
+                divider
+                onClick={() => {
+                  actions.setActiveCategory(null);
+                  this.props.history.push(`/`);
+                  this.handleDrawerClose();
+                }}
+              >
+                <ListItemText primary="ALL" />
               </ListItem>
               {categories.map(category => (
-                <ListItem button divider key={`${category.name}`}>
-                  <ListItemText
-                    primary={`${category.name.toUpperCase()}`}
-                    onClick={() => {
-                      actions.setActiveCategory(category);
-                      this.handleDrawerClose();
-                    }}
-                  />
+                <ListItem
+                  button
+                  divider
+                  key={`${category.name}`}
+                  onClick={() => {
+                    actions.setActiveCategory(category);
+                    this.props.history.push(`/${category.name}`);
+                    this.handleDrawerClose();
+                  }}
+                >
+                  <ListItemText primary={`${category.name.toUpperCase()}`} />
                 </ListItem>
               ))}
             </List>
@@ -101,4 +105,6 @@ function mapDispatchToProps(dispatch) {
     }
   };
 }
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(styles(HeaderBar)));
+export default connect(mapStateToProps, mapDispatchToProps)(
+  withRouter(styles(HeaderBar))
+);

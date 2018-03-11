@@ -35,6 +35,13 @@ class App extends Component {
                   <Route exact path="/" component={AllPostsPage} />
                   <Route
                     exact
+                    path="/:category"
+                    render={({ match, location }) => (
+                      <AllPostsPage category={match.params.category} />
+                    )}
+                  />
+                  <Route
+                    exact
                     path="/:category/:postId"
                     render={({ match, location }) => (
                       <PostDetailsPage

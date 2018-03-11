@@ -5,7 +5,8 @@ import {
   DELETE_POST,
   CREATE_POST,
   SORT_POST_LIST,
-  FETCH_POST_DATA
+  FETCH_POST_DATA,
+  FETCH_POSTS_BY_CATEGORY
 } from "../actions/post";
 import { sortByOjectProperty } from "../utils/Utils";
 export function posts(state = [], action) {
@@ -54,6 +55,10 @@ export function posts(state = [], action) {
       if (action.status === "success") {
         updatedState.push(action.response);
       }
+      break;
+    case FETCH_POSTS_BY_CATEGORY:
+      updatedState = action.status === "success" ? action.response : [];
+      sortByOjectProperty(updatedState, "timestamp");
       break;
     default:
       console.warn(`Unknown action ${action.type}`);

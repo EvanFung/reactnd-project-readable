@@ -22,8 +22,8 @@ const defaultData = {
   "6ef708404db7": {
     id: "6ef708404db7",
     parentId: "56206e17606d",
-    timestamp: 1511638781738,
-    body: "OMG, that was long... and made no sense either, WTF?",
+    timestamp: 1520578841894,
+    body: "(/≧▽≦)/, It was so long...didn't read ah..?",
     author: "complainer",
     voteScore: 0,
     deleted: false,

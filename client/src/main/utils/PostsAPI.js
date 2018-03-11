@@ -84,6 +84,10 @@ export const getCategories = () => {
   return fetch(`${api}/categories`, { headers }).then(res => res.json());
 };
 
+export const getPostByCategory = category => {
+  return fetch(`${api}/${category}/posts`, { headers }).then(res => res.json());
+};
+
 export const get = postId => {
   return fetch(`${api}/posts/${postId}`, { headers }).then(res => res.json());
 };
