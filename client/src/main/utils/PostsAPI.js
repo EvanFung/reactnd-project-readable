@@ -55,7 +55,7 @@ export const editPost = post => {
 
 export const remove = (post, option) => {
   return fetch(`${api}/posts/${post.id}`, {
-    method: "DELETE",
+    method: 'DELETE',
     headers
   }).then(res => res.json());
 };

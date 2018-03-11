@@ -77,11 +77,11 @@ function vote (token, id, option) {
 }
 
 function disable (token, id) {
-    return new Promise((res) => {
-      let posts = getData(token)
-      posts[id].deleted = true
-      res(posts[id])
-    })
+  return new Promise((res) => {
+    let posts = getData(token)
+    posts[id].deleted = true
+    res(posts[id])
+  })
 }
 
 function edit (token, id, post) {

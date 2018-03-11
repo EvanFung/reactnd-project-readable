@@ -8,7 +8,7 @@ import CommentBox from "../posts/body/CommentBox";
 import Divider from "material-ui/Divider";
 import Loader from "../assets/LoadingProgress";
 import { connect } from "react-redux";
-
+import { withRouter } from "react-router-dom";
 import * as PostActions from "../../actions/post";
 import * as CategoryActions from "../../actions/category";
 import * as CommentActions from "../../actions/comment";
@@ -30,6 +30,13 @@ class PostDetailsPage extends React.Component {
 
     this.props.actions.setActiveCategory(this.props.category);
   }
+
+  requestDeletePost = (post) => {
+    this.props.actions.deletePost(post).then(()=> {
+      this.props.actions.setActiveCategory(null);
+      this.props.history.push(`/`)
+    })
+  }
   render() {
     const { classes, post, actions } = this.props;
     if (!post) {
@@ -44,8 +51,8 @@ class PostDetailsPage extends React.Component {
           <PostContent
             post={post}
             editPost={actions.editPost}
-            deletePost={actions.deletePost}
-            commentMode={true}
+            deletePost={this.requestDeletePost}
+            postDetails={true}
             fetchPosts={actions.fetchPosts}
             setActiveCategory={actions.setActiveCategory}
           />
@@ -92,5 +99,5 @@ function mapDispatchToProps(dispatch) {
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(
-  styles(PostDetailsPage)
+  withRouter(styles(PostDetailsPage))
 );

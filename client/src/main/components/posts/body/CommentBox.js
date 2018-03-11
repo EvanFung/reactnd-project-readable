@@ -34,7 +34,7 @@ class CommentBox extends React.Component {
               post={comment}
               commentBox={true}
               editComment={actions.editComment}
-              deleteComment={actions.deleteComment}
+              deletePost={actions.deleteComment}
             />
             <CardActions disableActionSpacing className={classes.root}>
               <IconButton

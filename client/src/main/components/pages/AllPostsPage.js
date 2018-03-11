@@ -7,6 +7,7 @@ class AllPostsPage extends React.Component {
   componentWillMount() {
     this.props.actions.fetchPosts();
   }
+
   render() {
     const { posts, actions,activeCategory } = this.props;
     return (
@@ -36,7 +37,7 @@ function mapDispatchToProps(dispatch, ownProps) {
       updatePostScore: (post, voteType) =>
         dispatch(PostActions.updatePostScore({ post, voteType })),
       editPost: data => dispatch(PostActions.editPost(data)),
-      deletePost: post => dispatch(PostActions.deletePost({ post }))
+      deletePost: (post) => dispatch(PostActions.deletePost({ post })),
     }
   };
 }
