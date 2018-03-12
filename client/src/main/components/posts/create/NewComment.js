@@ -12,7 +12,6 @@ class NewComment extends React.Component {
 
 
   onSubmitForm = e => {
-    const body = this.state.body;
     if (e.charCode === 13) {
       if (this.checkIsEmpty()) {
         this.props.postNewComment(this.props.post, this.state).then(() => {

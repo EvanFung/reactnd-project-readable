@@ -1,5 +1,4 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { CircularProgress } from 'material-ui/Progress'
 import { styles } from '../../styles/assets/LoadingProgress'
 const CircularIndeterminate = (props) => {

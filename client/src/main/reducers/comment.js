@@ -21,7 +21,6 @@ export function comments(state = [], action) {
       }
       break;
     case UPDATE_COMMENT_SCORE:
-      console.log(`Comment ${action.response.id} updated`);
       let commentIndex = updatedState.findIndex(
         item => item.id === action.response.id
       );
@@ -31,7 +30,6 @@ export function comments(state = [], action) {
       updatedState = sortByOjectProperty(updatedState, "timestamp");
       break;
     case DELETE_COMMENT:
-      console.log(`Comment ${action.response.id} removed`);
       updatedState = updatedState.filter(
         comment => comment.id !== action.response.id
       );

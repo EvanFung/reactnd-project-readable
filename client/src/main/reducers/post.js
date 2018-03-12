@@ -8,7 +8,6 @@ import {
   FETCH_POST_DATA,
   FETCH_POSTS_BY_CATEGORY
 } from "../actions/post";
-import { FETCH_COMMENTS_FOR_POST } from "../actions/comment";
 import { sortByOjectProperty } from "../utils/Utils";
 export function posts(state = [], action) {
   let updatedState = state.slice();

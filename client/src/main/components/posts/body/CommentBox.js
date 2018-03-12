@@ -1,6 +1,5 @@
 import React from "react";
 import PostContent from "./PostContent";
-import UpDownVoter from "../button/UpDownVoter";
 import Divider from "material-ui/Divider";
 import { connect } from "react-redux";
 import * as CommentActions from "../../../actions/comment";

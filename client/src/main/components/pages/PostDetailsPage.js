@@ -5,7 +5,6 @@ import NewComment from "../posts/create/NewComment";
 import UpDownVoter from "../posts/button/UpDownVoter";
 import styles from "../../styles/pages/PostDetailsPage";
 import CommentBox from "../posts/body/CommentBox";
-import Divider from "material-ui/Divider";
 import Loader from "../assets/LoadingProgress";
 import { CardActions } from 'material-ui/Card'
 import IconButton from 'material-ui/IconButton'
