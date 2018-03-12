@@ -170,7 +170,10 @@ app.put("/comments/:id", bodyParser.json(), (req, res) => {
 
 app.post("/comments", bodyParser.json(), (req, res) => {
   comments.add(req.token, req.body).then(
-    data => res.send(data),
+    data => {
+      posts.incrementCommentCount(req.token,data.parentId);
+      res.send(data);
+    },
     error => {
       console.error(error);
       res.status(500).send({
@@ -195,7 +198,10 @@ app.post("/comments/:id", bodyParser.json(), (req, res) => {
 
 app.delete("/comments/:id", (req, res) => {
   comments.disable(req.token, req.params.id).then(
-    data => res.send(data),
+    data => {
+      posts.decrementCommentCount(req.token,data.parentId)
+      res.send(data)
+    },
     error => {
       console.error(error);
       res.status(500).send({

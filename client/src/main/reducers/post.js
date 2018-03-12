@@ -61,16 +61,6 @@ export function posts(state = [], action) {
       updatedState = action.status === "success" ? action.response : [];
       sortByOjectProperty(updatedState, "timestamp");
       break;
-    case FETCH_COMMENTS_FOR_POST:
-      postIndex = updatedState.findIndex(
-        item => item.id === action.response[0].parentId
-      );
-      let comments = action.response
-      updatedState[postIndex] = {
-        ...updatedState[postIndex],
-        comments
-      };
-      break;
     default:
       console.warn(`Unknown action ${action.type}`);
   }

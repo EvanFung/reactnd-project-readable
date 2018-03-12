@@ -24,10 +24,7 @@ class PostCardItem extends React.Component {
               post={this.props.post}
               updatePostScore={updatePostScore}
             />
-            <CommentButton
-              post={this.props.post}
-              comments={this.props.comments}
-            />
+            <CommentButton post={this.props.post} />
           </div>
         </Card>
       </div>

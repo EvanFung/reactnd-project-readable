@@ -93,6 +93,15 @@ function edit (token, id, post) {
         res(posts[id])
     })
 }
+function incrementCommentCount(token, postId) {
+  let posts = getData(token)
+  posts[postId].commentCount++
+}
+
+function decrementCommentCount(token, postId) {
+  let posts = getData(token)
+  posts[postId].commentCount--
+}
 
 module.exports = {
   get,
@@ -102,5 +111,7 @@ module.exports = {
   vote,
   disable,
   edit,
-  getAll
+  getAll,
+  incrementCommentCount,
+  decrementCommentCount
 }
