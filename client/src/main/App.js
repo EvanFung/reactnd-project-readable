@@ -9,7 +9,7 @@ import AddPostTooltips from "./components/menu/Tooltips";
 import NewPost from "./components/posts/create/NewPost";
 import AllPostsPage from "./components/pages/AllPostsPage";
 import PostDetailsPage from "./components/pages/PostDetailsPage";
-import NotFoundPage from './components/pages/NotFoundPage'
+import NotFoundPage from "./components/pages/NotFoundPage";
 class App extends Component {
   state = {
     formDialogOpen: false
@@ -32,6 +32,7 @@ class App extends Component {
               <Grid item md={1} />
               <Grid item md={10} container={true} direction="column">
                 <Switch>
+                  
                   <Route exact path="/" component={AllPostsPage} />
                   <Route
                     exact
@@ -40,6 +41,7 @@ class App extends Component {
                       <AllPostsPage category={match.params.category} />
                     )}
                   />
+                  
                   <Route
                     exact
                     path="/:category/:postId"
@@ -50,7 +52,7 @@ class App extends Component {
                       />
                     )}
                   />
-                  <Route path="*" component={NotFoundPage}/>
+                  <Route path="*" component={NotFoundPage} />
                 </Switch>
               </Grid>
               <Grid item md={1} />

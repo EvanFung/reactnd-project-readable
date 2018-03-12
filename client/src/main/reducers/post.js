@@ -8,6 +8,7 @@ import {
   FETCH_POST_DATA,
   FETCH_POSTS_BY_CATEGORY
 } from "../actions/post";
+import { FETCH_COMMENTS_FOR_POST } from "../actions/comment";
 import { sortByOjectProperty } from "../utils/Utils";
 export function posts(state = [], action) {
   let updatedState = state.slice();
@@ -59,6 +60,16 @@ export function posts(state = [], action) {
     case FETCH_POSTS_BY_CATEGORY:
       updatedState = action.status === "success" ? action.response : [];
       sortByOjectProperty(updatedState, "timestamp");
+      break;
+    case FETCH_COMMENTS_FOR_POST:
+      postIndex = updatedState.findIndex(
+        item => item.id === action.response[0].parentId
+      );
+      let comments = action.response
+      updatedState[postIndex] = {
+        ...updatedState[postIndex],
+        comments
+      };
       break;
     default:
       console.warn(`Unknown action ${action.type}`);

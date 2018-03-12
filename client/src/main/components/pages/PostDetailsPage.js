@@ -43,7 +43,7 @@ class PostDetailsPage extends React.Component {
     });
   };
   render() {
-    const { classes, post, actions } = this.props;
+    const { classes, post, actions,comments } = this.props;
     if (!post) {
       return <Loader />;
     }
@@ -75,7 +75,7 @@ class PostDetailsPage extends React.Component {
                         <IconButton>
                           <CommentIcon />
                         </IconButton>
-                        <Typography>{post.commentCount}</Typography>
+                        <Typography>{comments.length}</Typography>
                       </CardActions>
                     </div>
                     <div>
@@ -102,7 +102,8 @@ class PostDetailsPage extends React.Component {
 }
 function mapStateToProps(state) {
   return {
-    post: state.activePost
+    post: state.activePost,
+    comments: state.comments
   };
 }
 function mapDispatchToProps(dispatch) {

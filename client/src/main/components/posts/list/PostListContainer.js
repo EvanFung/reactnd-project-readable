@@ -1,7 +1,6 @@
 import React from "react";
 import PostCardItem from "./PostCardItem";
 class PostListContainer extends React.Component {
-
   render() {
     const {
       posts,
@@ -28,5 +27,4 @@ class PostListContainer extends React.Component {
     );
   }
 }
-
 export default PostListContainer;

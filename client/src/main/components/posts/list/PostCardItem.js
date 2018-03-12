@@ -4,10 +4,11 @@ import PostContent from "../body/PostContent";
 import styles from "../../../styles/post/PostCardItem";
 import UpDownVoter from "../button/UpDownVoter";
 import CommentButton from "../button/CommentButton";
+
 class PostCardItem extends React.Component {
-  requestDeletePost = (post) => {
+  requestDeletePost = post => {
     this.props.deletePost(post);
-  }
+  };
   render() {
     const { classes, updatePostScore, editPost } = this.props;
     return (
@@ -23,7 +24,10 @@ class PostCardItem extends React.Component {
               post={this.props.post}
               updatePostScore={updatePostScore}
             />
-            <CommentButton post={this.props.post} />
+            <CommentButton
+              post={this.props.post}
+              comments={this.props.comments}
+            />
           </div>
         </Card>
       </div>
