@@ -12,7 +12,7 @@ This app was built with react, redux, [react-redux-router](https://github.com/re
 
 Before being able to run this application, you must have [Node Package Manager](https://nodejs.org/en/)  or [Yarn](https://yarnpkg.com/) installed on your computer.
 
-####Get the app running
+###Get the app running
 
 This repository has both server and client side code for the application, so you will need to run both of them to make it work.
 
