@@ -1,6 +1,6 @@
 {
   "name": "client",
-  "home":"https://github.com/EvanFung/reactnd-project-readable",
+  "homepage":"https://github.com/EvanFung/reactnd-project-readable",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
