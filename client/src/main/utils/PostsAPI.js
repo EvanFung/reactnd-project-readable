@@ -5,6 +5,7 @@ const api = "https://reddit-clone-server-pczpjmmglv.now.sh";
 
 //Generate a unique token for storing your data on the backen server
 
+
 let token;
 
 try {
