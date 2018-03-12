@@ -1,7 +1,7 @@
 import { generateRandomId } from "./Utils";
 import "whatwg-fetch";
 
-const api = "https://reddit-clone-server-pczpjmmglv.now.sh";
+const api = "http://localhost:5001";
 
 //Generate a unique token for storing your data on the backen server
 
