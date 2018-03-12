@@ -2,7 +2,6 @@
   "name": "reddit-clone-server",
   "version": "0.0.1",
   "description": "A server for the Udacity Reddit Clone project for ReactND",
-  "main": "index.js",
   "keywords": [
     "udacity",
     "redux",
@@ -20,9 +19,14 @@
     "redux": "^3.7.2",
     "react-redux": "^5.0.5",
     "react-router": "^4.1.1",
-    "react-router-dom": "4.1.1"
+    "react-router-dom": "4.1.1",
+    "micro": "latest"
   },
+  "main":"src/server.js",
   "scripts": {
-    "start":"node src/server.js"
+    "start": "node src/server.js"
+  },
+  "devDependencies": {
+    "micro": "^9.1.4"
   }
 }

@@ -1,5 +1,6 @@
 {
   "name": "client",
+  "home":"https://github.com/EvanFung/reactnd-project-readable",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -19,6 +20,7 @@
     "react-thunk": "^1.0.0",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
+    "serve": "^6.5.3",
     "typeface-roboto": "0.0.54",
     "uuid": "^3.2.1",
     "whatwg-fetch": "^2.0.3"
@@ -27,10 +29,14 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "now-start": "serve --single ./build",
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build"
   },
   "devDependencies": {
     "babel-plugin-import": "^1.6.3",
+    "gh-pages": "^1.1.0",
     "react-app-rewired": "^1.4.1"
   }
 }
